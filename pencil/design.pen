@@ -1,0 +1,1318 @@
+{
+  "version": "2.14",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bi8Au",
+      "x": 0,
+      "y": 0,
+      "name": "Frame",
+      "clip": true,
+      "width": 800,
+      "height": 600,
+      "fill": "#FFFFFF",
+      "layout": "none"
+    },
+    {
+      "type": "frame",
+      "id": "ACl4L",
+      "x": -2655,
+      "y": 53,
+      "name": "App Root",
+      "clip": true,
+      "width": 1280,
+      "height": 800,
+      "fill": "$bg-app",
+      "children": [
+        {
+          "type": "frame",
+          "id": "ojVQa",
+          "name": "Layout",
+          "width": "fill_container",
+          "height": "fill_container",
+          "children": [
+            {
+              "type": "frame",
+              "id": "TGolR",
+              "x": 0,
+              "y": 0,
+              "name": "Collapsed Sidebar",
+              "enabled": false,
+              "width": 56,
+              "height": 800,
+              "fill": "$bg-sidebar",
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "M7Wkb",
+                  "name": "CS Header",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": [
+                    12,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "i8ICz",
+                      "name": "CS App Icon",
+                      "fill": "$accent-primary",
+                      "content": "🎮",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 18,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "BpK4I",
+                      "name": "CS Expand",
+                      "fill": "$text-muted",
+                      "content": "▶",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Nff1e",
+                  "name": "CS Conv 1",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "padding": [
+                    14,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "PgmvP",
+                      "name": "CS D3 Icon",
+                      "fill": "$accent-d3",
+                      "content": "🐉",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "m0OVD",
+                  "name": "CS Conv 2",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "padding": [
+                    14,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "RSo4t",
+                      "name": "CS WoW Icon",
+                      "fill": "$accent-wow",
+                      "content": "🐻",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "aSAbj",
+                  "name": "CS Conv 3",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "padding": [
+                    14,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "CMc7O",
+                      "name": "CS WoW Icon 2",
+                      "fill": "$accent-wow",
+                      "content": "🐻",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "EfqgR",
+                  "name": "CS Spacer",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "layout": "vertical"
+                },
+                {
+                  "type": "frame",
+                  "id": "cNZXa",
+                  "name": "CS New Chat",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "padding": [
+                    12,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "gJNQ7",
+                      "name": "CS New Icon",
+                      "fill": "$accent-primary",
+                      "content": "+",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "dpX8A",
+              "name": "Sidebar",
+              "width": 280,
+              "height": "fill_container",
+              "fill": "$bg-sidebar",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "mmF5l",
+                  "name": "Sidebar Header",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "y4uyt",
+                      "name": "App Title",
+                      "fill": "$text-primary",
+                      "content": "D3 / WoW Agent",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 18,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "YuUci",
+                      "layoutPosition": "absolute",
+                      "x": 236,
+                      "y": 13,
+                      "name": "Collapse Button",
+                      "width": 28,
+                      "height": 28,
+                      "fill": "$bg-input",
+                      "cornerRadius": "$radius-sm",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "JVTty",
+                          "name": "Collapse Icon",
+                          "fill": "$text-muted",
+                          "content": "◀",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "s8so1s",
+                  "name": "Search Frame",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "padding": [
+                    0,
+                    16,
+                    8,
+                    16
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Afh0H",
+                      "name": "Search Input",
+                      "width": "fill_container",
+                      "fill": "$bg-input",
+                      "cornerRadius": "$radius-md",
+                      "gap": 8,
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "W7fm7w",
+                          "name": "Search Icon",
+                          "fill": "$text-muted",
+                          "content": "🔍",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "SlyNm",
+                          "name": "Search Placeholder",
+                          "fill": "$text-muted",
+                          "content": "Buscar...",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "XyTqE",
+                  "name": "New Conversation Item",
+                  "width": "fill_container",
+                  "fill": "$bg-input",
+                  "cornerRadius": "$radius-md",
+                  "gap": 10,
+                  "padding": [
+                    12,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "YwiAl",
+                      "name": "New Conv Icon",
+                      "fill": "$accent-primary",
+                      "content": "✨",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "YiiZg",
+                      "name": "New Conv Text",
+                      "fill": "$text-secondary",
+                      "content": "Nueva conversación...",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "KhUZV",
+                      "name": "New Conv Badge",
+                      "fill": "$text-muted",
+                      "content": "auto-naming",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "WzgPL",
+                  "name": "Today Label",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "padding": [
+                    20,
+                    16,
+                    8,
+                    16
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "kTjWc",
+                      "name": "Today Text",
+                      "fill": "$text-muted",
+                      "content": "HOY",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "rOLbk",
+                  "name": "Conversation Item 1",
+                  "width": "fill_container",
+                  "fill": "$bg-bubble-user",
+                  "cornerRadius": "$radius-md",
+                  "gap": 10,
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "K0hUee",
+                      "name": "D3 Icon",
+                      "fill": "$accent-d3",
+                      "content": "🐉",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 20,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Mmx3S",
+                      "name": "Conv 1 Text",
+                      "fill": "$text-primary",
+                      "content": "Build de Witch Doctor",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "RGFK3",
+                  "name": "Conversation Item 2",
+                  "width": "fill_container",
+                  "cornerRadius": "$radius-md",
+                  "gap": 10,
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "wVzhL",
+                      "name": "WoW Icon",
+                      "fill": "$accent-wow",
+                      "content": "🐻",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 20,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "oGaTt",
+                      "name": "Conv 2 Text",
+                      "fill": "$text-primary",
+                      "content": "M+ Healer recomendado",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "AwSGn",
+                  "name": "Yesterday Label",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "padding": [
+                    20,
+                    16,
+                    8,
+                    16
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "MFzFn",
+                      "name": "Yesterday Text",
+                      "fill": "$text-muted",
+                      "content": "AYER",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n6ISt",
+                  "name": "Conversation Item 3",
+                  "width": "fill_container",
+                  "cornerRadius": "$radius-md",
+                  "gap": 10,
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "L07tEy",
+                      "name": "WoW Icon 2",
+                      "fill": "$accent-wow",
+                      "content": "🐻",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 20,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "z7t8dO",
+                      "name": "Conv 3 Text",
+                      "fill": "$text-primary",
+                      "content": "Raid Tindral S3",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "FK0M4",
+                  "name": "Spacer",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "layout": "vertical"
+                },
+                {
+                  "type": "frame",
+                  "id": "fy4vj",
+                  "name": "New Chat Button",
+                  "width": "fill_container",
+                  "fill": "$accent-primary",
+                  "cornerRadius": "$radius-md",
+                  "gap": 8,
+                  "padding": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Mj5Ii",
+                      "name": "New Chat Icon",
+                      "fill": "#ffffff",
+                      "content": "+",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "H7qfy5",
+                      "name": "New Chat Text",
+                      "fill": "#ffffff",
+                      "content": "Nueva conversación",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "cKvIH",
+                  "name": "Divider 1",
+                  "width": "fill_container",
+                  "height": 1,
+                  "fill": "$border-subtle"
+                },
+                {
+                  "type": "frame",
+                  "id": "GEA2v",
+                  "name": "Divider 2",
+                  "width": "fill_container",
+                  "height": 1,
+                  "fill": "$border-subtle"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "lZ2pT",
+              "name": "Chat Area",
+              "width": "fill_container",
+              "height": "fill_container",
+              "fill": "$bg-chat",
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Io04A",
+                  "name": "Chat Header",
+                  "width": "fill_container",
+                  "stroke": "$border-subtle",
+                  "strokeWidth": {
+                    "bottom": 1
+                  },
+                  "gap": 12,
+                  "padding": [
+                    12,
+                    20
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Zgl9m",
+                      "name": "Agent Badge",
+                      "fill": "$accent-d3",
+                      "cornerRadius": 9999,
+                      "gap": 6,
+                      "padding": [
+                        6,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "P0OxrE",
+                          "name": "Badge Icon",
+                          "fill": "#000000",
+                          "content": "🐉",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "CKijP",
+                          "name": "Badge Text",
+                          "fill": "#000000",
+                          "content": "D3",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 12,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "wIouV",
+                      "name": "Chat Title",
+                      "fill": "$text-secondary",
+                      "content": "Conversación actual",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "JZoDi",
+                      "name": "Header Spacer",
+                      "width": "fill_container",
+                      "height": 1,
+                      "layout": "none"
+                    },
+                    {
+                      "type": "text",
+                      "id": "HlJkq",
+                      "name": "Model Badge",
+                      "fill": "$text-muted",
+                      "content": "groq · 120 tok",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "rrBG7",
+                  "name": "Messages Area",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": [
+                    16,
+                    20
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "WmlJU",
+                      "name": "User Message",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "vwSC2",
+                          "name": "User Bubble",
+                          "width": "fill_container",
+                          "fill": "$bg-bubble-user",
+                          "cornerRadius": "$radius-lg",
+                          "gap": 8,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "justifyContent": "end",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "h71XjP",
+                              "name": "User Avatar",
+                              "content": "🧑",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "w7GWtb",
+                              "name": "User Text",
+                              "fill": "$text-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "¿Qué build de Witch Doctor es meta esta temporada?",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "EOGN4",
+                          "name": "User Meta",
+                          "gap": 6,
+                          "justifyContent": "end",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "X2xC7R",
+                              "name": "User Time",
+                              "fill": "$text-muted",
+                              "content": "hace 10s · D3",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "iHkn9",
+                      "name": "Assistant Message",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "gQOh8",
+                          "name": "Assistant Badge",
+                          "gap": 6,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "nrjfq",
+                              "name": "Assistant Badge Icon",
+                              "fill": "$accent-d3",
+                              "content": "🐉",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 12,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "XuQLu",
+                              "name": "Assistant Badge Agent",
+                              "fill": "$text-muted",
+                              "content": "D3 · groq · 120 tok · 2s",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "OmU7P",
+                          "name": "Assistant Bubble",
+                          "width": "fill_container",
+                          "fill": "$bg-bubble-assistant",
+                          "cornerRadius": "$radius-lg",
+                          "layout": "vertical",
+                          "gap": 6,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "pKhcl",
+                              "name": "Assistant Text 1",
+                              "fill": "$text-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "• Set: Mundunugu's Regalia (6 piezas)",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "i4X1K",
+                              "name": "Assistant Text 2",
+                              "fill": "$text-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "• Arma: The Barber (dagger ceremonial)",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "S4iDu",
+                              "name": "Assistant Text 3",
+                              "fill": "$text-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "• Gemas: Bane of the Trapped, Enforcer, Gogok",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "I1R6O",
+                              "name": "Assistant Text 4",
+                              "fill": "$text-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "• Cubo: Furnace, Mantle of Channeling, CoE",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "GGMZp",
+                      "name": "User Message 2",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "P9JywK",
+                          "name": "User Bubble 2",
+                          "width": "fill_container",
+                          "fill": "$bg-bubble-user",
+                          "cornerRadius": "$radius-lg",
+                          "gap": 8,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "justifyContent": "end",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Qq3T8",
+                              "name": "User Avatar 2",
+                              "fill": "$text-primary",
+                              "content": "🧑",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "jCuzu",
+                              "name": "User Text 2",
+                              "fill": "$text-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Ahora en WoW, ¿qué healer es mejor para M+?",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "tcukW",
+                          "name": "User Meta 2",
+                          "gap": 6,
+                          "justifyContent": "end",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "v9NXzv",
+                              "name": "User Time 2",
+                              "fill": "$text-muted",
+                              "content": "hace 5s · WoW",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "N995TI",
+                  "name": "Input Bar",
+                  "width": "fill_container",
+                  "stroke": "$border-subtle",
+                  "strokeWidth": {
+                    "top": 1
+                  },
+                  "gap": 8,
+                  "padding": [
+                    12,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "IABCx",
+                      "name": "Agent Dropdown",
+                      "fill": "$bg-input",
+                      "cornerRadius": "$radius-md",
+                      "gap": 6,
+                      "padding": [
+                        8,
+                        10
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "vJuVM",
+                          "name": "Dropdown Icon",
+                          "fill": "$accent-d3",
+                          "content": "🐉",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "g9UiT",
+                          "name": "Dropdown Label",
+                          "fill": "$text-primary",
+                          "content": "D3",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "WHRet",
+                          "name": "Dropdown Arrow",
+                          "fill": "$text-muted",
+                          "content": "▼",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 10,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Ys9X1",
+                      "name": "Text Input Field",
+                      "width": "fill_container",
+                      "fill": "$bg-input",
+                      "cornerRadius": "$radius-md",
+                      "gap": 8,
+                      "padding": [
+                        10,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "K1AvTq",
+                          "name": "Input Placeholder",
+                          "fill": "$text-muted",
+                          "content": "Pregunta sobre D3 o WoW...",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "FegN8",
+                      "name": "Send Button",
+                      "width": 36,
+                      "height": 36,
+                      "fill": "$accent-primary",
+                      "cornerRadius": 9999,
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ceAEx",
+                          "x": 10,
+                          "y": 9,
+                          "name": "Send Icon",
+                          "fill": "#ffffff",
+                          "content": "➤",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "gYNLA",
+                  "layoutPosition": "absolute",
+                  "x": 0,
+                  "y": 45,
+                  "name": "Dropdown Menu",
+                  "fill": "$bg-sidebar",
+                  "cornerRadius": "$radius-md",
+                  "stroke": "$border-subtle",
+                  "strokeWidth": 1,
+                  "layout": "vertical",
+                  "gap": 2,
+                  "padding": 4,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "oWhE7",
+                      "name": "D3 Option",
+                      "cornerRadius": "$radius-sm",
+                      "gap": 8,
+                      "padding": [
+                        10,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "gUPUA",
+                          "name": "D3 Option Icon",
+                          "fill": "$accent-d3",
+                          "content": "🐉",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "k7Mji",
+                          "name": "D3 Option Text",
+                          "fill": "$text-primary",
+                          "content": "Diablo III",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "XnUKq",
+                      "name": "WoW Option",
+                      "cornerRadius": "$radius-sm",
+                      "gap": 8,
+                      "padding": [
+                        10,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "POm5d",
+                          "name": "WoW Option Icon",
+                          "fill": "$accent-wow",
+                          "content": "🐻",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "drwst",
+                          "name": "WoW Option Text",
+                          "fill": "$text-primary",
+                          "content": "World of Warcraft",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "P8bj6",
+                  "layoutPosition": "absolute",
+                  "x": 20,
+                  "y": 180,
+                  "name": "Streaming Indicator",
+                  "width": 960,
+                  "height": 36,
+                  "fill": "$bg-bubble-assistant",
+                  "cornerRadius": "$radius-md",
+                  "gap": 8,
+                  "padding": [
+                    10,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "w4e6I",
+                      "name": "Streaming Dot",
+                      "width": 8,
+                      "height": 8,
+                      "fill": "$accent-wow",
+                      "cornerRadius": 9999,
+                      "layout": "none"
+                    },
+                    {
+                      "type": "text",
+                      "id": "e9dgt",
+                      "name": "Streaming Text",
+                      "fill": "$text-secondary",
+                      "content": "🐻 WoW está pensando...",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "j0bj2E",
+                      "name": "Streaming Spacer",
+                      "width": "fill_container",
+                      "height": 1,
+                      "layout": "none"
+                    },
+                    {
+                      "type": "text",
+                      "id": "m27SEO",
+                      "name": "Streaming Model",
+                      "fill": "$text-muted",
+                      "content": "groq",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "PO1w8",
+                  "layoutPosition": "absolute",
+                  "x": 0,
+                  "y": 0,
+                  "name": "Empty State",
+                  "enabled": false,
+                  "width": 1000,
+                  "height": 688,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "kPG0c",
+                      "name": "Empty Title",
+                      "fill": "$text-primary",
+                      "content": "🐉🐻 D3 / WoW Agent",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 24,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "GK2QC",
+                      "name": "Empty Subtitle",
+                      "fill": "$text-secondary",
+                      "content": "Pregunta sobre builds, items, temporadas o mecánicas",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ZgHzl",
+                      "name": "Empty Hint 1",
+                      "fill": "$text-muted",
+                      "content": "• Builds de temporada  • Stats de items  • Mecánicas de boss",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "QmBjX",
+                      "name": "Empty Hint 2",
+                      "fill": "$text-muted",
+                      "content": "• Paragon y optimización  • Mythic+  • Raids",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "bg-app": {
+      "type": "color",
+      "value": "#0f1117"
+    },
+    "bg-sidebar": {
+      "type": "color",
+      "value": "#0a0b12"
+    },
+    "bg-chat": {
+      "type": "color",
+      "value": "#0f1117"
+    },
+    "bg-bubble-user": {
+      "type": "color",
+      "value": "#1c1e2e"
+    },
+    "bg-bubble-assistant": {
+      "type": "color",
+      "value": "#141624"
+    },
+    "bg-input": {
+      "type": "color",
+      "value": "#1c1e2e"
+    },
+    "accent-d3": {
+      "type": "color",
+      "value": "#ff6600"
+    },
+    "accent-wow": {
+      "type": "color",
+      "value": "#00ff88"
+    },
+    "accent-primary": {
+      "type": "color",
+      "value": "#00cc66"
+    },
+    "text-primary": {
+      "type": "color",
+      "value": "#f1f5f9"
+    },
+    "text-secondary": {
+      "type": "color",
+      "value": "#94a3b8"
+    },
+    "text-muted": {
+      "type": "color",
+      "value": "#475569"
+    },
+    "border-subtle": {
+      "type": "color",
+      "value": "#1a3d1a"
+    },
+    "border-hover": {
+      "type": "color",
+      "value": "#2d5a2d"
+    },
+    "success": {
+      "type": "color",
+      "value": "#22c55e"
+    },
+    "warning": {
+      "type": "color",
+      "value": "#f59e0b"
+    },
+    "error": {
+      "type": "color",
+      "value": "#ef4444"
+    },
+    "shadow-sm": {
+      "type": "number",
+      "value": 4
+    },
+    "radius-sm": {
+      "type": "number",
+      "value": 6
+    },
+    "radius-md": {
+      "type": "number",
+      "value": 8
+    },
+    "radius-lg": {
+      "type": "number",
+      "value": 12
+    },
+    "radius-xl": {
+      "type": "number",
+      "value": 16
+    },
+    "font-sans": {
+      "type": "string",
+      "value": "Inter"
+    },
+    "font-mono": {
+      "type": "string",
+      "value": "Geist Mono"
+    },
+    "accent-d3-bg": {
+      "type": "color",
+      "value": "#ff660020"
+    },
+    "accent-wow-bg": {
+      "type": "color",
+      "value": "#00ff8820"
+    }
+  },
+  "fileToken": "4f03b17b-4840-4e9c-8b8a-f21f669a6fc2"
+}
