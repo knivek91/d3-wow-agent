@@ -24,7 +24,12 @@ class ConsoleLogger {
     if (this.requestId) {
       entry.requestId = this.requestId
     }
-    const output = JSON.stringify(entry)
+    const output = JSON.stringify(entry, (_key: unknown, value: unknown) => {
+      if (value instanceof Error) {
+        return { message: value.message, stack: value.stack, ...value }
+      }
+      return value
+    })
     switch (level) {
       case 'error':
         console.error(output)

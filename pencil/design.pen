@@ -3,21 +3,9 @@
   "children": [
     {
       "type": "frame",
-      "id": "bi8Au",
-      "x": 0,
-      "y": 0,
-      "name": "Frame",
-      "clip": true,
-      "width": 800,
-      "height": 600,
-      "fill": "#FFFFFF",
-      "layout": "none"
-    },
-    {
-      "type": "frame",
       "id": "ACl4L",
-      "x": -2655,
-      "y": 53,
+      "x": -2613,
+      "y": 595,
       "name": "App Root",
       "clip": true,
       "width": 1280,
@@ -1197,6 +1185,442 @@
                       "content": "• Paragon y optimización  • Mythic+  • Raids",
                       "fontFamily": "$font-sans",
                       "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "hNMCw",
+      "x": -2613,
+      "y": 1610,
+      "name": "Login Screen",
+      "clip": true,
+      "width": 1280,
+      "height": 800,
+      "fill": "$bg-app",
+      "children": [
+        {
+          "type": "frame",
+          "id": "r1ZHt",
+          "name": "Left Decorative Panel",
+          "width": 480,
+          "height": "fill_container",
+          "fill": "$bg-sidebar",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": 48,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "d5g2S",
+              "name": "Decorative Logo Area",
+              "layout": "vertical",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "r1b5E",
+                  "layoutPosition": "absolute",
+                  "x": -19,
+                  "y": -24,
+                  "name": "Icon Glow",
+                  "fill": {
+                    "type": "gradient",
+                    "gradientType": "radial",
+                    "enabled": true,
+                    "rotation": 0,
+                    "size": {
+                      "width": 1,
+                      "height": 1
+                    },
+                    "colors": [
+                      {
+                        "color": "#00cc66",
+                        "position": 0
+                      },
+                      {
+                        "color": "#00cc6600",
+                        "position": 1
+                      }
+                    ]
+                  },
+                  "width": 120,
+                  "height": 120
+                },
+                {
+                  "type": "text",
+                  "id": "G8ego0",
+                  "name": "Game Icons",
+                  "fill": "$text-primary",
+                  "content": "🐉🐻",
+                  "fontFamily": "Inter",
+                  "fontSize": 64,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "LH45h",
+                  "name": "Left App Name",
+                  "fill": "$text-primary",
+                  "content": "D3 / WoW Agent",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 28,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "oftPL",
+                  "name": "Left Tagline",
+                  "fill": "$text-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": 320,
+                  "content": "Asistente inteligente para Diablo III y World of Warcraft",
+                  "textAlign": "center",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ajJMv",
+              "name": "Decorative Divider",
+              "width": 120,
+              "height": 2,
+              "fill": "$accent-primary"
+            },
+            {
+              "type": "frame",
+              "id": "cidbd",
+              "name": "Features List",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ifMmm",
+                  "name": "Feature 1",
+                  "width": 320,
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "v9nT7",
+                      "name": "F1 Icon",
+                      "fill": "$accent-d3",
+                      "content": "⚔️",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 18,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "i0X4a",
+                      "name": "F1 Text",
+                      "fill": "$text-secondary",
+                      "content": "Builds y temporadas actualizadas",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "pCCst",
+                  "name": "Feature 2",
+                  "width": 320,
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "bnBzj",
+                      "name": "F2 Icon",
+                      "fill": "$accent-wow",
+                      "content": "🛡️",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 18,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "r8mQLm",
+                      "name": "F2 Text",
+                      "fill": "$text-secondary",
+                      "content": "Mythic+ y raid recommendations",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "jfbym",
+                  "name": "Feature 3",
+                  "width": 320,
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "JHQTE",
+                      "name": "F3 Icon",
+                      "fill": "$accent-primary",
+                      "content": "📊",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 18,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "LABeu",
+                      "name": "F3 Text",
+                      "fill": "$text-secondary",
+                      "content": "Análisis de items y paragon",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "uSyq4",
+          "name": "Right Login Panel",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "padding": 80,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "e8CTb",
+              "name": "Login Card",
+              "width": 380,
+              "layout": "vertical",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "EnmX0",
+                  "name": "Card Header",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "vdrwi",
+                      "name": "Card Logo",
+                      "fill": "$text-primary",
+                      "content": "🐉🐻",
+                      "fontFamily": "Inter",
+                      "fontSize": 32,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Fy8CM",
+                      "name": "Card Title",
+                      "fill": "$text-primary",
+                      "content": "Iniciar sesión",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 24,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "N1XaZ",
+                      "name": "Card Subtitle",
+                      "fill": "$text-secondary",
+                      "content": "Ingresa tus credenciales para acceder",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "U3nn6",
+                  "name": "Form Divider",
+                  "width": "fill_container",
+                  "height": 1,
+                  "fill": "$border-subtle"
+                },
+                {
+                  "type": "frame",
+                  "id": "F5zseg",
+                  "name": "Username Group",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "o2n49Q",
+                      "name": "Username Label",
+                      "fill": "$text-secondary",
+                      "content": "Usuario",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "wyS4p",
+                      "name": "Username Input",
+                      "width": "fill_container",
+                      "height": 44,
+                      "fill": "$bg-input",
+                      "cornerRadius": "$radius-md",
+                      "stroke": "$border-subtle",
+                      "strokeWidth": 1,
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        14
+                      ],
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "fJTso",
+                          "name": "Username Placeholder",
+                          "fill": "$text-muted",
+                          "content": "tu_usuario",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "jChdL",
+                  "name": "Password Group",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "nI5tt",
+                      "name": "Password Label",
+                      "fill": "$text-secondary",
+                      "content": "Contraseña",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "opDQQ",
+                      "name": "Password Input",
+                      "width": "fill_container",
+                      "height": 44,
+                      "fill": "$bg-input",
+                      "cornerRadius": "$radius-md",
+                      "stroke": "$border-subtle",
+                      "strokeWidth": 1,
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        14
+                      ],
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "E7GNy",
+                          "name": "Password Placeholder",
+                          "fill": "$text-muted",
+                          "content": "••••••••",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "SsGw1",
+                  "name": "Login Button",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$accent-primary",
+                  "cornerRadius": "$radius-md",
+                  "stroke": "#00000000",
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "mofJ3",
+                      "name": "Login Button Text",
+                      "fill": "#ffffff",
+                      "content": "Ingresar",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Q6W0Jy",
+                  "name": "Login Footer",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "sSu7l",
+                      "name": "Footer Hint",
+                      "fill": "$text-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Credenciales proporcionadas por el administrador",
+                      "textAlign": "center",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "hPRhL",
+                      "name": "Version Text",
+                      "fill": "$text-muted",
+                      "content": "v1.0.0 · D3 / WoW Agent",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 11,
                       "fontWeight": "normal"
                     }
                   ]

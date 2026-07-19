@@ -111,6 +111,7 @@ export default function ChatPage() {
   }, [activeId])
 
   const handleSend = useCallback(async (message: string, agentType: 'd3' | 'wow') => {
+    console.log('[ChatPage] handleSend', { message, agentType, activeId, error })
     setError(null)
     currentAgent.current = agentType
 
@@ -141,6 +142,7 @@ export default function ChatPage() {
 
     try {
       const res = await sendMessage(convId, message, agentType)
+      console.log('[ChatPage] sendMessage response', { res, streaming })
       const assistantMsg: Message = {
         id: res.id,
         conversationId: res.conversationId,
