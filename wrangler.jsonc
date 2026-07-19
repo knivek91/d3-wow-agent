@@ -5,7 +5,10 @@
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
-	"main": "./src/worker.ts",
+	"main": "./.cloudflare/worker.js",
+	"assets": {
+		"directory": "./dist"
+	},
 	"observability": {
 		"enabled": true
 	},
