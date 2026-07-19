@@ -96,6 +96,8 @@ export const sendMessageFn = createServerFn({ method: 'POST' })
     const requestId = crypto.randomUUID()
     const logger = createLogger(requestId)
 
+    logger?.info({ agentType, conversationId, messageLength: message.length }, 'Processing chat message')
+
     try {
       const conv = await db.query.conversations.findFirst({
         where: eq(conversations.id, conversationId),

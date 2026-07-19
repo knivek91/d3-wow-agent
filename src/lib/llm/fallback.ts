@@ -6,13 +6,17 @@ export async function callWithFallback(
   messages: Array<{ role: string; content: string }>,
   logger?: Logger,
 ): Promise<string> {
+  const startTime = Date.now();
+
   try {
-    logger?.info({ provider: "groq" }, "Attempting Groq call");
-    return await chat({
+    logger?.info({ provider: "groq", model: "llama-3.3-70b-versatile" }, "Attempting Groq call");
+    const result = await chat({
       adapter: groqAdapter,
       messages,
       stream: false,
     });
+    logger?.info({ provider: "groq", durationMs: Date.now() - startTime }, "Groq succeeded");
+    return result;
   } catch (error) {
     const isRateLimit =
       error instanceof Error &&
@@ -27,11 +31,14 @@ export async function callWithFallback(
     }
 
     try {
-      return await chat({
+      logger?.info({ provider: "gemini", model: "gemini-3.5-flash" }, "Attempting Gemini fallback");
+      const result = await chat({
         adapter: geminiAdapter,
         messages,
         stream: false,
       });
+      logger?.info({ provider: "gemini", durationMs: Date.now() - startTime }, "Gemini succeeded");
+      return result;
     } catch (fallbackError) {
       logger?.error({ error: fallbackError, provider: "gemini" }, "Gemini fallback also failed");
       throw fallbackError;
