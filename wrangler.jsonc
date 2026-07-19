@@ -5,10 +5,7 @@
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
-	"main": "./.cloudflare/worker.js",
-	"assets": {
-		"directory": "./dist"
-	},
+	"main": "@tanstack/react-start/server-entry",
 	"observability": {
 		"enabled": true
 	},
