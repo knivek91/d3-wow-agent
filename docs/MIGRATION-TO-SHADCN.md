@@ -15,7 +15,7 @@ Audit of components using raw HTML instead of shadcn/ui components.
 ### 2. `EmptyState.tsx` — Inline styles with magic color strings
 - **Line 42**: `style={{ backgroundColor: 'rgba(255,102,0,0.15)', color: '#ff6600' }}`
 - **Line 49**: `style={{ backgroundColor: 'rgba(0,255,136,0.15)', color: '#00ff88' }}`
-- **Replace with**: `className="bg-[var(--accent-d3-bg)] text-[var(--accent-d3)]"` (CSS variables already exist)
+- **Replace with**: `className="bg-(--accent-d3-bg) text-(--accent-d3)"` (Tailwind v4 arbitrary property syntax)
 
 ### 3. `StreamingIndicator.tsx` — 5 inline styles with hardcoded hex values
 - **Line 12**: `const accentColor = isD3 ? '#ff6600' : '#00ff88'`
@@ -52,7 +52,7 @@ Audit of components using raw HTML instead of shadcn/ui components.
 
 ### 8. AgentBadge.tsx — inline style (already uses CSS vars)
 - **Line 22**: `style={{ backgroundColor: bgOpacity, color: accentColor }}`
-- **Replace with**: `className={cn(isD3 ? 'bg-[var(--accent-d3-bg)] text-[var(--accent-d3)]' : ...)}`
+- **Replace with**: `className={cn(isD3 ? 'bg-(--accent-d3-bg) text-(--accent-d3)' : 'bg-(--accent-wow-bg) text-(--accent-wow)')}`
 
 ### 9. Sidebar.tsx — border-based separators
 - **Lines 124, 186**: `border-b border-border` / `border-t border-border`
