@@ -2,8 +2,9 @@ import { D3_SYSTEM_PROMPT } from "./d3-specialist";
 import { WOW_SYSTEM_PROMPT } from "./wow-specialist";
 import { callWithFallback } from "../llm/fallback";
 import type { Logger } from "../observability/logger";
+import type { AgentType } from "#/types/agent.ts";
 
-export type AgentType = "d3" | "wow";
+export type { AgentType } from "#/types/agent.ts";
 
 export interface AgentMessage {
   role: "user" | "assistant" | "system";

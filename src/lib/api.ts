@@ -5,11 +5,12 @@ import {
   listMessagesFn,
   sendMessageFn,
 } from '../api/server-fns'
+import type { AgentType } from '#/types/agent.ts'
 
 export interface Conversation {
   id: string
   title: string
-  agentType: 'd3' | 'wow'
+  agentType: AgentType
   createdAt: string
   updatedAt: string
 }
@@ -19,7 +20,7 @@ export interface Message {
   conversationId: string
   role: 'user' | 'assistant' | 'system'
   content: string
-  agentType: 'd3' | 'wow'
+  agentType: AgentType
   modelUsed?: string
   tokensUsed?: number
   createdAt?: string
@@ -39,7 +40,7 @@ export async function getConversation(id: string): Promise<Conversation> {
   return conv
 }
 
-export async function createConversation(agentType: 'd3' | 'wow', title?: string): Promise<Conversation> {
+export async function createConversation(agentType: AgentType, title?: string): Promise<Conversation> {
   const result = await createConversationFn({ data: { agentType, title: title || 'Nueva conversación' } })
   if (result.error) {
     console.error('createConversation server error:', result.error)
@@ -62,7 +63,7 @@ export async function listMessages(conversationId: string): Promise<Message[]> {
 export async function sendMessage(
   conversationId: string,
   message: string,
-  agentType: 'd3' | 'wow',
+  agentType: AgentType,
 ): Promise<{ id: string; content: string; conversationId: string }> {
   const result = await sendMessageFn({ data: { conversationId, message, agentType } })
   if (result.error) {

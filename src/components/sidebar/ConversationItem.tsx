@@ -1,10 +1,12 @@
 import { useState } from 'react'
-import { cn } from '../../lib/utils'
+import { Button } from '#/components/ui/button.tsx'
+import { cn } from '#/lib/utils.ts'
+import type { AgentType } from '#/types/agent.ts'
 
 interface ConversationItemProps {
   id: string
   title: string
-  agentType: 'd3' | 'wow'
+  agentType: AgentType
   isActive: boolean
   onClick: () => void
   onDelete: () => void
@@ -26,24 +28,23 @@ export default function ConversationItem({
     <div
       role="button"
       tabIndex={0}
-      onClick={onClick}
-      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onClick() }}
+      className={cn(
+        'flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer transition-colors text-sm w-full justify-start font-normal',
+        isActive
+          ? 'bg-secondary text-foreground'
+          : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground',
+      )}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className={cn(
-        'flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer transition-colors text-sm group',
-        isActive
-          ? 'bg-[#1c1e2e] text-[#f1f5f9]'
-          : 'text-[#94a3b8] hover:bg-[#141624] hover:text-[#f1f5f9]',
-      )}
+      onClick={onClick}
     >
       <span className="flex-shrink-0 text-xs">{icon}</span>
-      <span className="flex-1 truncate">{title}</span>
+      <span className="flex-1 truncate text-left">{title}</span>
       {hovered && (
         <button
           type="button"
           onClick={(e) => { e.stopPropagation(); onDelete() }}
-          className="flex-shrink-0 w-6 h-6 rounded flex items-center justify-center text-[#475569] hover:text-red-400 hover:bg-[#2a1b1b] transition-colors"
+          className="flex-shrink-0 w-6 h-6 rounded flex items-center justify-center text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors"
           title="Eliminar conversación"
         >
           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

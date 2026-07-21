@@ -1,5 +1,8 @@
+import { Badge } from '#/components/ui/badge.tsx'
+import type { AgentType } from '#/types/agent.ts'
+
 interface StreamingIndicatorProps {
-  agentType: 'd3' | 'wow'
+  agentType: AgentType
 }
 
 export default function StreamingIndicator({ agentType }: StreamingIndicatorProps) {
@@ -12,22 +15,20 @@ export default function StreamingIndicator({ agentType }: StreamingIndicatorProp
     <div className="flex items-start w-full mb-4">
       <div className="flex flex-col">
         <div className="mb-1.5 ml-1">
-          <span
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium"
+          <Badge
+            className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium rounded-full"
             style={{
               backgroundColor: isD3 ? 'rgba(255,102,0,0.1)' : 'rgba(0,255,136,0.1)',
               color: accentColor,
             }}
           >
             {icon} {name} Agent
-          </span>
+          </Badge>
         </div>
-        <div
-          className="rounded-2xl rounded-tl-md px-5 py-3 bg-[#141624]"
-        >
+        <div className="rounded-2xl rounded-tl-md px-5 py-3 bg-card">
           <div className="flex items-center gap-1.5" style={{ color: accentColor }}>
             <span className="text-sm">{icon}</span>
-            <span className="text-sm text-[#94a3b8]">
+            <span className="text-sm text-muted-foreground">
               {name} está pensando
             </span>
             <span className="flex items-center gap-1 ml-1">
@@ -36,7 +37,7 @@ export default function StreamingIndicator({ agentType }: StreamingIndicatorProp
               <span className="streaming-dot w-1.5 h-1.5 rounded-full inline-block" style={{ backgroundColor: accentColor }} />
             </span>
           </div>
-          <div className="mt-1 text-[10px] text-[#475569]">
+          <div className="mt-1 text-[10px] text-muted-foreground/60">
             groq · llama-3.3
           </div>
         </div>
