@@ -1,0 +1,44 @@
+# CodeRabbit configuration for d3-wow-agent
+# https://docs.coderabbit.ai/getting-started/configure-coderabbit
+#
+# Stack overview:
+#   - Framework: TanStack Start (React 19, SSR, file-based routing via @tanstack/react-router)
+#   - Styling: Tailwind CSS v4 + shadcn/ui (New York style, CSS variables, zinc base)
+#   - Icons: lucide-react (NEVER inline SVGs)
+#   - Database: Cloudflare D1 + Drizzle ORM
+#   - Auth: Better Auth (email/password + Discord OAuth)
+#   - Deploy: Cloudflare Workers via wrangler
+#   - Colors: Use CSS variables (--accent-d3, --accent-wow, etc.), NEVER hardcoded hex colors
+#   - Layout: CSS Grid with `fixed inset-0 grid grid-cols-[auto_1fr] grid-rows-[1fr] overflow-hidden`
+#   - State: Single state object with update() helper, not multiple useState
+#   - Error handling: All catch blocks must set error state and console.error
+#   - AgentType: Global type in src/types/agent.ts, never use magic strings
+
+language: en-US
+
+reviews:
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - main
+  path_instructions:
+    - path: "src/components/ui/**"
+      instructions: "This is auto-generated shadcn/ui code. Do NOT suggest refactoring these components. Only review for security issues."
+    - path: "src/components/chat/**"
+      instructions: "React component using shadcn/ui, Tailwind CSS v4, and CSS variables. Follow existing patterns."
+    - path: "src/components/sidebar/**"
+      instructions: "Sidebar component using shadcn/ui, Tailwind CSS v4, and CSS variables. Follow existing patterns."
+    - path: "src/routes/**"
+      instructions: "TanStack Start route file. Uses file-based routing."
+    - path: "src/lib/**"
+      instructions: "Shared utilities and server functions."
+    - path: "src/types/**"
+      instructions: "Global TypeScript types used across the project."
+    - path: "src/styles.css"
+      instructions: "Global Tailwind CSS with custom CSS variables for theming. Do not add inline hex colors."
+    - path: "src/worker.ts"
+      instructions: "Cloudflare Worker entry point. Handles auth and D1 database access."
+
+chat:
+  auto_reply: true
