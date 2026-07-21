@@ -1,18 +1,25 @@
 # CodeRabbit configuration for d3-wow-agent
 # https://docs.coderabbit.ai/getting-started/configure-coderabbit
-#
-# Stack overview:
-#   - Framework: TanStack Start (React 19, SSR, file-based routing via @tanstack/react-router)
-#   - Styling: Tailwind CSS v4 + shadcn/ui (New York style, CSS variables, zinc base)
-#   - Icons: lucide-react (NEVER inline SVGs)
-#   - Database: Cloudflare D1 + Drizzle ORM
-#   - Auth: Better Auth (email/password + Discord OAuth)
-#   - Deploy: Cloudflare Workers via wrangler
-#   - Colors: Use CSS variables (--accent-d3, --accent-wow, etc.), NEVER hardcoded hex colors
-#   - Layout: CSS Grid with `fixed inset-0 grid grid-cols-[auto_1fr] grid-rows-[1fr] overflow-hidden`
-#   - State: Single state object with update() helper, not multiple useState
-#   - Error handling: All catch blocks must set error state and console.error
-#   - AgentType: Global type in src/types/agent.ts, never use magic strings
+
+# ─────────────────────────────────────────────────────────────
+# Stack Context (CodeRabbit uses this for faster, accurate reviews)
+# ─────────────────────────────────────────────────────────────
+# Framework:    TanStack Start (React 19, SSR, file-based routing via @tanstack/react-router)
+# Styling:      Tailwind CSS v4 + shadcn/ui (New York style) + tw-animate-css
+# Icons:        lucide-react — NEVER use inline SVGs
+# Database:     Cloudflare D1 (SQLite) + Drizzle ORM
+# Auth:         Better Auth (email/password + Discord OAuth) — admin creates users
+# Deploy:       Cloudflare Workers via wrangler (src/worker.ts)
+# Colors:       CSS variables (--accent-d3: #ff6600, --accent-d3-bg, --accent-wow: #00ff88, --accent-wow-bg)
+#               NEVER use hardcoded hex/rgba colors or inline style={{}}
+# Layout:       CSS Grid: fixed inset-0 grid grid-cols-[auto_1fr] grid-rows-[1fr] overflow-hidden
+# State:        Single ChatState object with update() helper — NOT multiple useState calls
+# Error:        catch blocks must console.error + set error state — NO silent catches
+# AgentType:    Global type in src/types/agent.ts — NEVER use magic strings like 'd3' or 'wow'
+# Dark theme:   bg #0f1117, sidebar #0a0b12, input #1c1e2e, border #1a3d1a, muted #475569
+# Package mgr:  npm (has package-lock.json)
+# Testing:      Vitest + Playwright (pinned to 1.61.1)
+# ─────────────────────────────────────────────────────────────
 
 language: en-US
 
@@ -22,23 +29,134 @@ reviews:
     drafts: false
     base_branches:
       - main
+  request_changes_workflow: true
+  high_level_summary: true
+  poem: false
+  review_status: true
+  collapse_walkthrough: false
+  sequence_diagrams: false
+
+  # ════════════════════════════════════════════
+  # GLOBAL RULES — apply to ALL files
+  # ════════════════════════════════════════════
+  rules:
+    - rule: "No inline `style={{ }}`"
+      severity: error
+      description: "Use Tailwind utility classes (className) instead of inline style objects. Only exception is dynamic CSS variable values via style={{ '--custom-var': value }}."
+      pattern: "style=\\{\\{"
+    - rule: "No inline SVG icons"
+      severity: error
+      description: "Import icons from lucide-react instead of writing inline svg elements (missing aria-label, inconsistent sizing)."
+      pattern: "(?i)<svg\\b"
+    - rule: "No hardcoded hex or rgba colors"
+      severity: error
+      description: "Use CSS variables (var(--background), var(--primary), var(--accent-d3), etc.) or Tailwind semantic classes (bg-background, text-foreground). Never #ff6600, #00ff88, rgba(...), etc."
+      pattern: "(?i)#[0-9a-f]{3,8}\\b"
+    - rule: "No SSR-unsafe browser globals"
+      severity: error
+      description: "Do not use window, document, localStorage, navigator in component/function scope. Use useState lazy initializer, useEffect or useSyncExternalStore. Wrap in typeof window !== 'undefined' guard if absolutely necessary."
+      patterns:
+        - "\\bwindow\\."
+        - "\\bdocument\\."
+        - "localStorage\\."
+    - rule: "No silent catch blocks"
+      severity: error
+      description: "Every catch block must call console.error() AND set error state. Empty catch {} is banned. Log with a descriptive prefix like console.error('[ChatPage] failed:', err)."
+      pattern: "catch\\s*\\{[^\\w]*(\\}\\s*$|\\}\\s*\\)|\\}\\s*\\n)"
+    - rule: "No `any` type"
+      severity: warning
+      description: "Use proper TypeScript types. Import from #/types/agent.ts (AgentType), #/lib/api.ts (Conversation, Message), or define locally. Never use any."
+      pattern: ":\\s*any"
+    - rule: "No magic AgentType strings"
+      severity: error
+      description: "Use the AGENT_OPTIONS constant from src/types/agent.ts instead of comparing strings like 'd3' or 'wow' directly (except inside that file)."
+      patterns:
+        - "(?<!agent: )'d3'"
+        - "(?<!agent: )'wow'"
+    - rule: "No uncontrolled useState proliferation"
+      severity: warning
+      description: "Prefer a single state object (ChatState interface) with an update() helper over many separate useState calls."
+      pattern: "(?<!update\\(\\{)const \\[\\w+,\\s*set\\w+\\]\\s*=\\s*useState"
+    - rule: "Buttons must handle keyboard events"
+      severity: warning
+      description: "Interactive elements with role='button' or onClick must also handle onKeyDown (Enter/Space). Prefer using the shadcn Button component instead of raw divs."
+      pattern: "role=\"button\""
+
+  # ════════════════════════════════════════════
+  # PATH-SPECIFIC INSTRUCTIONS
+  # ════════════════════════════════════════════
   path_instructions:
     - path: "src/components/ui/**"
-      instructions: "This is auto-generated shadcn/ui code. Do NOT suggest refactoring these components. Only review for security issues."
+      instructions: >
+        AUTO-GENERATED shadcn/ui components. Do NOT suggest refactoring,
+        restyling, reorganizing, or renaming anything here. These are
+        generated by `npx shadcn add` and should only change when the
+        CLI updates them. Only flag security vulnerabilities.
+
     - path: "src/components/chat/**"
-      instructions: "React component using shadcn/ui, Tailwind CSS v4, and CSS variables. Follow existing patterns."
+      instructions: >
+        Chat UI components using React 19 + shadcn/ui + Tailwind v4.
+        Review for:
+        1. ChatState consolidation — no new separate useStates
+        2. Error handling — every catch must console.error + set error
+        3. No inline style={{}} — use Tailwind classes
+        4. No inline SVGs — use lucide-react icons
+        5. No hardcoded hex colors — use CSS variables
+        6. No SSR issues — no window/document in initializers
+
     - path: "src/components/sidebar/**"
-      instructions: "Sidebar component using shadcn/ui, Tailwind CSS v4, and CSS variables. Follow existing patterns."
+      instructions: >
+        Sidebar components. Review for:
+        1. Responsive behavior — uses md:hidden/md:flex pattern
+        2. No Button-in-button hydration issues (conversation item uses div[role=button])
+        3. Mobile collapse state properly handled
+        4. No SSR issues
+
     - path: "src/routes/**"
-      instructions: "TanStack Start route file. Uses file-based routing."
+      instructions: >
+        TanStack Start route files — file-based routing. Review for:
+        1. Server functions (@tanstack/react-start server$) — proper error handling
+        2. Loaders returning correct data shapes
+        3. No client-only code in server functions
+
     - path: "src/lib/**"
-      instructions: "Shared utilities and server functions."
+      instructions: >
+        Shared utilities and API server functions. Review for:
+        1. D1 query safety (parameterized queries, no SQL injection)
+        2. Proper TypeScript types (no any)
+        3. Server functions correctly scoped
+
     - path: "src/types/**"
-      instructions: "Global TypeScript types used across the project."
+      instructions: >
+        Global TypeScript type definitions. AgentType + AGENT_OPTIONS
+        are the canonical source. Review for:
+        1. No magic strings — all agent references must use these types
+        2. Backward compatibility when adding new fields
+
     - path: "src/styles.css"
-      instructions: "Global Tailwind CSS with custom CSS variables for theming. Do not add inline hex colors."
+      instructions: >
+        Global Tailwind v4 CSS with @theme directive and CSS variables.
+        CRITICAL: Do NOT add hardcoded hex colors anywhere. Only modify
+        CSS variable definitions. The --accent-d3, --accent-wow variables
+        are consumed by AgentBadge, StreamingIndicator, EmptyState, etc.
+
     - path: "src/worker.ts"
-      instructions: "Cloudflare Worker entry point. Handles auth and D1 database access."
+      instructions: >
+        Cloudflare Worker entry point. Uses @cloudflare/vite-plugin.
+        Review for:
+        1. D1 binding usage (env.DB)
+        2. Auth middleware
+        3. CORS headers
+        4. No floating promises — all async must be awaited
+
+    - path: "drizzle.config.ts"
+      instructions: "Drizzle ORM schema config. Review schema changes for backward compatibility with D1 (SQLite)."
+
+    - path: "wrangler.jsonc"
+      instructions: "Cloudflare Workers config. Review D1 bindings, environment variables, and compatibility flags."
+
+    - path: "debug-layout.*"
+      instructions: "Temporary debug/analysis files that should be deleted before merging to main."
 
 chat:
   auto_reply: true
