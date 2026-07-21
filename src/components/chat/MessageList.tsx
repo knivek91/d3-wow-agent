@@ -1,12 +1,13 @@
 import { useRef, useEffect } from 'react'
 import MessageBubble from './MessageBubble'
 import StreamingIndicator from './StreamingIndicator'
+import type { AgentType } from '#/types/agent.ts'
 
 interface Message {
   id: string
   role: 'user' | 'assistant'
   content: string
-  agentType?: 'd3' | 'wow'
+  agentType?: AgentType
   modelUsed?: string
   tokensUsed?: number
   createdAt?: string
@@ -15,7 +16,7 @@ interface Message {
 interface MessageListProps {
   messages: Message[]
   streaming?: boolean
-  currentAgent?: 'd3' | 'wow'
+  currentAgent?: AgentType
 }
 
 export default function MessageList({ messages, streaming, currentAgent = 'd3' }: MessageListProps) {
@@ -28,7 +29,7 @@ export default function MessageList({ messages, streaming, currentAgent = 'd3' }
   if (messages.length === 0) return null
 
   return (
-    <div className="flex-1 overflow-y-auto px-4 py-6">
+    <div className="flex-1 overflow-y-auto px-4 py-6 min-h-0">
       <div className="max-w-4xl mx-auto space-y-1">
         {messages.map((msg) => (
           <MessageBubble

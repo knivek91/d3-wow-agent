@@ -13,119 +13,139 @@ import {
   type Conversation,
   type Message,
 } from '../../lib/api'
+import type { AgentType } from '#/types/agent.ts'
+
+interface ChatState {
+  conversations: Conversation[]
+  activeId: string | undefined
+  messages: Message[]
+  streaming: boolean
+  loading: boolean
+  sidebarCollapsed: boolean
+  error: string | null
+  errorRecoverable: boolean
+}
+
+const initialState: ChatState = {
+  conversations: [],
+  activeId: undefined,
+  messages: [],
+  streaming: false,
+  loading: true,
+  sidebarCollapsed: false,
+  error: null,
+  errorRecoverable: false,
+}
 
 export default function ChatPage() {
-  const [conversations, setConversations] = useState<Conversation[]>([])
-  const [activeId, setActiveId] = useState<string | undefined>()
-  const [messages, setMessages] = useState<Message[]>([])
-  const [streaming, setStreaming] = useState(false)
-  const [loading, setLoading] = useState(true)
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const [errorRecoverable, setErrorRecoverable] = useState(false)
-  const currentAgent = useRef<'d3' | 'wow'>('d3')
+  const [state, setState] = useState<ChatState>(initialState)
+  const currentAgent = useRef<AgentType>('d3')
+
+  const update = useCallback((patch: Partial<ChatState>) => {
+    setState((prev) => ({ ...prev, ...patch }))
+  }, [])
 
   const fetchConversations = useCallback(async () => {
     try {
       const data = await listConversations()
-      setConversations(data)
-    } catch {
-      // silent
+      update({ conversations: data })
+    } catch (err) {
+      console.error('[ChatPage] Failed to fetch conversations:', err)
+      update({ error: 'No se pudieron cargar las conversaciones', errorRecoverable: true })
     }
-  }, [])
+  }, [update])
 
   useEffect(() => {
     async function init() {
-      setLoading(true)
+      update({ loading: true })
       try {
         const data = await listConversations()
-        setConversations(data)
-        if (data.length > 0) {
-          setActiveId(data[0].id)
-        }
-      } catch {
-        // no conversations yet
+        update({
+          conversations: data,
+          activeId: data.length > 0 ? data[0].id : undefined,
+        })
+      } catch (err) {
+        console.error('[ChatPage] Failed to initialize:', err)
+        update({ error: 'No se pudieron cargar las conversaciones', errorRecoverable: true })
       } finally {
-        setLoading(false)
+        update({ loading: false })
       }
     }
     init()
-  }, [])
+  }, [update])
 
   useEffect(() => {
-    if (!activeId) {
-      setMessages([])
+    if (!state.activeId) {
+      update({ messages: [] })
       return
     }
     async function load() {
       try {
-        const data = await listMessages(activeId)
-        setMessages(data)
-        const conv = conversations.find((c) => c.id === activeId)
+        const data = await listMessages(state.activeId!)
+        const conv = state.conversations.find((c) => c.id === state.activeId)
         if (conv) currentAgent.current = conv.agentType
-      } catch {
-        setMessages([])
+        update({ messages: data })
+      } catch (err) {
+        console.error('[ChatPage] Failed to load messages:', err)
+        update({ messages: [], error: 'No se pudieron cargar los mensajes', errorRecoverable: true })
       }
     }
     load()
-  }, [activeId, conversations])
+  }, [state.activeId, state.conversations, update])
 
   const handleSelectConversation = useCallback((id: string) => {
-    setActiveId(id)
-    setError(null)
-  }, [])
+    update({ activeId: id, error: null })
+  }, [update])
 
   const handleNewChat = useCallback(async () => {
     try {
       const agent = currentAgent.current
       const conv = await createConversation(agent)
-      setConversations((prev) => [conv, ...prev])
-      setActiveId(conv.id)
-      setMessages([])
-      setError(null)
+      update({
+        conversations: [conv, ...state.conversations],
+        activeId: conv.id,
+        messages: [],
+        error: null,
+      })
     } catch (err) {
-      console.error('handleNewChat error:', err)
-      setError('No se pudo crear la conversación')
-      setErrorRecoverable(true)
+      console.error('[ChatPage] Failed to create conversation:', err)
+      update({ error: 'No se pudo crear la conversación', errorRecoverable: true })
     }
-  }, [])
+  }, [state.conversations, update])
 
   const handleDeleteConversation = useCallback(async (id: string) => {
     try {
       await deleteConversation(id)
-      setConversations((prev) => prev.filter((c) => c.id !== id))
-      if (activeId === id) {
-        setConversations((prev) => {
-          if (prev.length > 0) {
-            setActiveId(prev[0].id)
-          } else {
-            setActiveId(undefined)
-          }
-          return prev
-        })
-      }
-    } catch {
-      setError('No se pudo eliminar la conversación')
-      setErrorRecoverable(true)
+      const remaining = state.conversations.filter((c) => c.id !== id)
+      update({
+        conversations: remaining,
+        activeId: state.activeId === id
+          ? (remaining.length > 0 ? remaining[0].id : undefined)
+          : state.activeId,
+      })
+    } catch (err) {
+      console.error('[ChatPage] Failed to delete conversation:', err)
+      update({ error: 'No se pudo eliminar la conversación', errorRecoverable: true })
     }
-  }, [activeId])
+  }, [state.conversations, state.activeId, update])
 
-  const handleSend = useCallback(async (message: string, agentType: 'd3' | 'wow') => {
-    console.log('[ChatPage] handleSend', { message, agentType, activeId, error })
-    setError(null)
+  const handleSend = useCallback(async (message: string, agentType: AgentType) => {
+    update({ error: null })
     currentAgent.current = agentType
 
-    let convId = activeId
+    let convId = state.activeId
 
     if (!convId) {
       try {
         const conv = await createConversation(agentType)
-        setConversations((prev) => [conv, ...prev])
+        update({
+          conversations: [conv, ...state.conversations],
+          activeId: conv.id,
+        })
         convId = conv.id
-        setActiveId(conv.id)
-      } catch {
-        setError('No se pudo crear la conversación')
-        setErrorRecoverable(true)
+      } catch (err) {
+        console.error('[ChatPage] Failed to create conversation:', err)
+        update({ error: 'No se pudo crear la conversación', errorRecoverable: true })
         return
       }
     }
@@ -137,12 +157,10 @@ export default function ChatPage() {
       content: message,
       agentType,
     }
-    setMessages((prev) => [...prev, tempUserMsg])
-    setStreaming(true)
+    update({ messages: [...state.messages, tempUserMsg], streaming: true })
 
     try {
       const res = await sendMessage(convId, message, agentType)
-      console.log('[ChatPage] sendMessage response', { res, streaming })
       const assistantMsg: Message = {
         id: res.id,
         conversationId: res.conversationId,
@@ -150,88 +168,92 @@ export default function ChatPage() {
         content: res.content,
         agentType,
       }
-      setMessages((prev) =>
-        prev
-          .filter((m) => m.id !== tempUserMsg.id)
-          .concat([
-            { ...tempUserMsg, id: res.conversationId + '-user-' + Date.now() },
-            assistantMsg,
-          ]),
-      )
-      setStreaming(false)
+      update({
+        messages: [
+          ...state.messages.filter((m) => m.id !== tempUserMsg.id),
+          { ...tempUserMsg, id: res.conversationId + '-user-' + Date.now() },
+          assistantMsg,
+        ],
+        streaming: false,
+      })
       await fetchConversations()
     } catch (err) {
-      setStreaming(false)
+      console.error('[ChatPage] Failed to send message:', err)
       const msg = err instanceof Error ? err.message : 'Error al procesar el mensaje'
-      setError(msg)
-      setErrorRecoverable(true)
+      update({ streaming: false, error: msg, errorRecoverable: true })
     }
-  }, [activeId, fetchConversations])
+  }, [state.activeId, state.conversations, state.messages, fetchConversations, update])
 
   const handleRetry = useCallback(() => {
-    setError(null)
-  }, [])
+    update({ error: null })
+  }, [update])
 
   const handleToggleCollapse = useCallback(() => {
-    setSidebarCollapsed((prev) => !prev)
-  }, [])
+    update({ sidebarCollapsed: !state.sidebarCollapsed })
+  }, [state.sidebarCollapsed, update])
 
-  const showEmptyState = !loading && !activeId && messages.length === 0 && !error
+  const showEmptyState = !state.loading && !state.activeId && state.messages.length === 0 && !state.error
 
-  const handleSelectAgent = useCallback((agent: 'd3' | 'wow') => {
+  const handleSelectAgent = useCallback((agent: AgentType) => {
     currentAgent.current = agent
     handleNewChat()
   }, [handleNewChat])
 
   return (
-    <div className="flex h-full w-full bg-[#0f1117]">
+    <div className="fixed inset-0 grid grid-cols-[auto_1fr] grid-rows-[1fr] overflow-hidden bg-background">
       <Sidebar
-        conversations={conversations}
-        activeId={activeId}
+        conversations={state.conversations}
+        activeId={state.activeId}
         onSelect={handleSelectConversation}
         onNewChat={handleNewChat}
         onDelete={handleDeleteConversation}
-        collapsed={sidebarCollapsed}
+        collapsed={state.sidebarCollapsed}
         onToggleCollapse={handleToggleCollapse}
       />
 
-      <div className="flex-1 flex flex-col min-w-0">
-        {loading && (
-          <div className="flex-1 flex items-center justify-center">
-            <div className="flex flex-col items-center gap-3">
-              <div className="w-8 h-8 border-2 border-[#00cc66] border-t-transparent rounded-full animate-spin" />
-              <span className="text-sm text-[#475569]">Cargando conversaciones...</span>
+      <div className="flex flex-col min-w-0 min-h-0">
+        {/* Content area */}
+        <div className="flex-1 overflow-auto min-h-0">
+          {state.loading && (
+            <div className="flex items-center justify-center h-full">
+              <div className="flex flex-col items-center gap-3">
+                <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                <span className="text-sm text-muted-foreground">Cargando conversaciones...</span>
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {showEmptyState && (
-          <EmptyState onSelectAgent={handleSelectAgent} />
-        )}
+          {showEmptyState && (
+            <EmptyState onSelectAgent={handleSelectAgent} />
+          )}
 
-        {error && (
-          <ErrorMessage
-            message={error}
-            recoverable={errorRecoverable}
-            onRetry={handleRetry}
-          />
-        )}
+          {state.error && (
+            <ErrorMessage
+              message={state.error}
+              recoverable={state.errorRecoverable}
+              onRetry={handleRetry}
+            />
+          )}
 
-        {!loading && !error && activeId && (
-          <MessageList
-            messages={messages}
-            streaming={streaming}
-            currentAgent={currentAgent.current}
-          />
-        )}
+          {!state.loading && !state.error && state.activeId && (
+            <MessageList
+              messages={state.messages}
+              streaming={state.streaming}
+              currentAgent={currentAgent.current}
+            />
+          )}
+        </div>
 
-        {!loading && !error && (
-          <ChatInput
-            onSend={handleSend}
-            disabled={streaming}
-            defaultAgent={currentAgent.current}
-          />
-        )}
+        {/* ChatInput */}
+        <div className="shrink-0">
+          {!state.loading && !state.error && (
+            <ChatInput
+              onSend={handleSend}
+              disabled={state.streaming}
+              defaultAgent={currentAgent.current}
+            />
+          )}
+        </div>
       </div>
     </div>
   )

@@ -1,13 +1,12 @@
 import { useState, useMemo } from 'react'
-import { cn } from '../../lib/utils'
+import { cn } from '#/lib/utils.ts'
 import ConversationItem from './ConversationItem'
-
-interface Conversation {
-  id: string
-  title: string
-  agentType: 'd3' | 'wow'
-  createdAt: string
-}
+import { Button } from '#/components/ui/button.tsx'
+import { Input } from '#/components/ui/input.tsx'
+import { Separator } from '#/components/ui/separator.tsx'
+import { Plus } from 'lucide-react'
+import { type AgentType, AGENT_OPTIONS } from '#/types/agent.ts'
+import type { Conversation } from '#/lib/api.ts'
 
 interface SidebarProps {
   conversations: Conversation[]
@@ -71,123 +70,162 @@ export default function Sidebar({
     return map
   }, [filtered])
 
-  if (collapsed) {
-    return (
-      <div className="flex flex-col items-center w-14 bg-[#0a0b12] border-r border-[#1a3d1a] py-3 gap-2 flex-shrink-0">
-        <button
-          type="button"
-          onClick={onToggleCollapse}
-          className="w-8 h-8 rounded-lg flex items-center justify-center text-[#94a3b8] hover:text-[#f1f5f9] hover:bg-[#141624] transition-colors"
-          title="Expandir sidebar"
+  return (
+    <>
+      {/* ── Collapsed sidebar: visible on mobile always, hidden on desktop when expanded ── */}
+      <div
+        className={cn(
+          "flex flex-col items-center w-14 bg-sidebar border-r border-border py-3 gap-2 flex-shrink-0",
+          "md:hidden"
+        )}
+      >
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={onNewChat}
+          className="text-primary"
+          title="Nueva conversación"
         >
-          ▶
-        </button>
-        <div className="flex-1 flex flex-col items-center gap-1 mt-2">
-          {conversations.slice(0, 5).map((c) => (
-            <button
+          <Plus className="w-4 h-4" />
+        </Button>
+        <div className="flex-1 flex flex-col items-center gap-1 mt-2 overflow-y-auto">
+          {conversations.slice(0, 8).map((c) => (
+            <Button
               key={c.id}
-              type="button"
+              variant="ghost"
+              size="icon"
               onClick={() => onSelect(c.id)}
               className={cn(
-                'w-8 h-8 rounded-lg flex items-center justify-center text-sm transition-colors',
-                c.id === activeId
-                  ? 'bg-[#1c1e2e]'
-                  : 'text-[#475569] hover:bg-[#141624]',
+                'text-sm',
+                c.id === activeId ? 'bg-secondary' : 'text-muted-foreground',
               )}
               title={c.title}
             >
-              {c.agentType === 'd3' ? '🐉' : '🐻'}
-            </button>
+              {AGENT_OPTIONS.find((o) => o.value === c.agentType)?.icon}
+            </Button>
           ))}
         </div>
-        <button
-          type="button"
-          onClick={onNewChat}
-          className="w-8 h-8 rounded-lg flex items-center justify-center text-[#00cc66] hover:bg-[#141624] transition-colors"
-          title="Nueva conversación"
-        >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-          </svg>
-        </button>
-      </div>
-    )
-  }
-
-  return (
-    <div className="flex flex-col w-[280px] bg-[#0a0b12] border-r border-[#1a3d1a] flex-shrink-0">
-      <div className="flex items-center justify-between px-4 h-14 border-b border-[#1a3d1a]">
-        <h1 className="text-sm font-bold text-[#f1f5f9]">D3 / WoW Agent</h1>
-        <button
-          type="button"
-          onClick={onToggleCollapse}
-          className="w-7 h-7 rounded flex items-center justify-center text-[#475569] hover:text-[#f1f5f9] hover:bg-[#141624] transition-colors"
-          title="Colapsar sidebar"
-        >
-          ◀
-        </button>
       </div>
 
-      <div className="px-3 pt-3">
-        <input
-          type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="Buscar conversaciones..."
-          className="w-full bg-[#141624] text-[#f1f5f9] placeholder-[#475569] text-xs rounded-lg px-3 py-2 outline-none border border-transparent focus:border-[#00cc66] transition-colors"
-        />
-      </div>
-
-      <button
-        type="button"
-        onClick={onNewChat}
-        className="flex items-center gap-2 mx-3 mt-3 px-3 py-2 rounded-lg text-sm text-[#00cc66] hover:bg-[#141624] transition-colors"
+      {/* ── Expanded sidebar: hidden on mobile, shown on desktop ── */}
+      <div
+        className={cn(
+          "hidden md:flex flex-col w-[280px] bg-sidebar border-r border-border flex-shrink-0",
+          collapsed && "md:hidden"
+        )}
       >
-        <span>✨</span>
-        <span>Nueva conversación...</span>
-      </button>
+        <div className="flex items-center justify-between px-4 h-14 border-b border-border">
+          <h1 className="text-sm font-bold text-foreground">D3 / WoW Agent</h1>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={onToggleCollapse}
+            className="text-muted-foreground"
+            title="Colapsar sidebar"
+          >
+            ◀
+          </Button>
+        </div>
 
-      <div className="flex-1 overflow-y-auto px-3 py-3 space-y-4">
-        {(Object.entries(grouped) as [GroupKey, Conversation[]][]).map(([key, items]) => {
-          if (items.length === 0) return null
-          return (
-            <div key={key}>
-              <div className="text-[10px] font-semibold uppercase tracking-wider text-[#475569] px-1 mb-1">
-                {groupLabels[key]}
-              </div>
-              <div className="space-y-0.5">
-                {items.map((c) => (
-                  <ConversationItem
-                    key={c.id}
-                    id={c.id}
-                    title={c.title}
-                    agentType={c.agentType}
-                    isActive={c.id === activeId}
-                    onClick={() => onSelect(c.id)}
-                    onDelete={() => onDelete(c.id)}
-                  />
-                ))}
-              </div>
-            </div>
-          )
-        })}
-      </div>
+        <div className="px-3 pt-3">
+          <Input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Buscar conversaciones..."
+            className="w-full text-xs"
+          />
+        </div>
 
-      <div className="px-3 py-3 border-t border-[#1a3d1a]">
-        <button
-          type="button"
+        <Button
+          variant="ghost"
           onClick={onNewChat}
-          className="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl text-sm font-medium transition-colors"
-          style={{ backgroundColor: '#00cc66', color: '#0f1117' }}
-          onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#00e673' }}
-          onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = '#00cc66' }}
+          className="flex items-center gap-2 mx-3 mt-3 px-3 py-2 justify-start text-primary"
         >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-          </svg>
-          Nueva conversación
-        </button>
+          <span>✨</span>
+          <span>Nueva conversación...</span>
+        </Button>
+
+        <Separator className="mx-3 my-2" />
+
+        <div className="flex-1 overflow-y-auto px-3 min-h-0">
+          <div className="space-y-4 py-3">
+            {(Object.entries(grouped) as [GroupKey, Conversation[]][]).map(([key, items]) => {
+              if (items.length === 0) return null
+              return (
+                <div key={key}>
+                  <div className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground px-1 mb-1">
+                    {groupLabels[key]}
+                  </div>
+                  <div className="space-y-0.5">
+                    {items.map((c) => (
+                      <ConversationItem
+                        key={c.id}
+                        id={c.id}
+                        title={c.title}
+                        agentType={c.agentType}
+                        isActive={c.id === activeId}
+                        onClick={() => onSelect(c.id)}
+                        onDelete={() => onDelete(c.id)}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+
+        <div className="px-3 py-3 border-t border-border">
+          <Button
+            onClick={onNewChat}
+            className="flex items-center justify-center gap-2 w-full"
+          >
+            <Plus className="w-4 h-4" />
+            Nueva conversación
+          </Button>
+        </div>
       </div>
-    </div>
+
+      {/* ── Desktop collapsed sidebar: shown on desktop when collapsed ── */}
+      {collapsed && (
+        <div className="hidden md:flex flex-col items-center w-14 bg-sidebar border-r border-border py-3 gap-2 flex-shrink-0">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={onToggleCollapse}
+            title="Expandir sidebar"
+          >
+            ▶
+          </Button>
+          <div className="flex-1 flex flex-col items-center gap-1 mt-2">
+            {conversations.slice(0, 5).map((c) => (
+              <Button
+                key={c.id}
+                variant="ghost"
+                size="icon"
+                onClick={() => onSelect(c.id)}
+                className={cn(
+                  'text-sm',
+                  c.id === activeId ? 'bg-secondary' : 'text-muted-foreground',
+                )}
+                title={c.title}
+              >
+                {AGENT_OPTIONS.find((o) => o.value === c.agentType)?.icon}
+              </Button>
+            ))}
+          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={onNewChat}
+            className="text-primary"
+            title="Nueva conversación"
+          >
+            <Plus className="w-4 h-4" />
+          </Button>
+        </div>
+      )}
+    </>
   )
 }

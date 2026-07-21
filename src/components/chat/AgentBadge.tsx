@@ -1,26 +1,29 @@
-import { cn } from '../../lib/utils'
+import { cn } from '#/lib/utils.ts'
+import { Badge } from '#/components/ui/badge.tsx'
+import { type AgentType, AGENT_OPTIONS } from '#/types/agent.ts'
 
 interface AgentBadgeProps {
-  agentType: 'd3' | 'wow'
+  agentType: AgentType
   model?: string
   tokens?: number
   duration?: string
 }
 
 export default function AgentBadge({ agentType, model, tokens, duration }: AgentBadgeProps) {
-  const isD3 = agentType === 'd3'
-  const icon = isD3 ? '🐉' : '🐻'
-  const name = isD3 ? 'Diablo III' : 'World of Warcraft'
-  const accentColor = isD3 ? '#ff6600' : '#00ff88'
-  const bgOpacity = isD3 ? 'rgba(255,102,0,0.1)' : 'rgba(0,255,136,0.1)'
+  const option = AGENT_OPTIONS.find((o) => o.value === agentType)
+  if (!option) return null
 
   return (
-    <div
-      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium"
-      style={{ backgroundColor: bgOpacity, color: accentColor }}
+    <Badge
+      className={cn(
+        'inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium rounded-full',
+        agentType === 'd3'
+          ? 'bg-(--accent-d3-bg) text-(--accent-d3)'
+          : 'bg-(--accent-wow-bg) text-(--accent-wow)'
+      )}
     >
-      <span>{icon}</span>
-      <span>{name}</span>
+      <span>{option.icon}</span>
+      <span>{option.label}</span>
       {model && (
         <span className="opacity-60 ml-1 text-[10px]">· {model}</span>
       )}
@@ -30,6 +33,6 @@ export default function AgentBadge({ agentType, model, tokens, duration }: Agent
       {duration && (
         <span className="opacity-60 text-[10px]">· {duration}</span>
       )}
-    </div>
+    </Badge>
   )
 }

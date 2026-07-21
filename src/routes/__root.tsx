@@ -58,8 +58,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body>
-        {children}
+      <body className="h-full">
+        <div className="h-full">
+          {children}
+        </div>
         <Scripts />
       </body>
     </html>
