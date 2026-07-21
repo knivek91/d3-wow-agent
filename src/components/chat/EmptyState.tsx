@@ -38,15 +38,13 @@ export default function EmptyState({ onSelectAgent }: EmptyStateProps) {
       <div className="flex gap-3">
         <Button
           onClick={() => onSelectAgent('d3')}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium"
-          style={{ backgroundColor: 'rgba(255,102,0,0.15)', color: '#ff6600' }}
+          className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium bg-(--accent-d3-bg) text-(--accent-d3)"
         >
           🐉 Diablo III
         </Button>
         <Button
           onClick={() => onSelectAgent('wow')}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium"
-          style={{ backgroundColor: 'rgba(0,255,136,0.15)', color: '#00ff88' }}
+          className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium bg-(--accent-wow-bg) text-(--accent-wow)"
         >
           🐻 World of Warcraft
         </Button>

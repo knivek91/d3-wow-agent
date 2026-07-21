@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Button } from '#/components/ui/button.tsx'
 import { Input } from '#/components/ui/input.tsx'
 import {
@@ -21,6 +21,10 @@ export default function ChatInput({ onSend, disabled, defaultAgent = 'd3' }: Cha
   const inputRef = useRef<HTMLInputElement>(null)
 
   const currentOption = AGENT_OPTIONS.find((o) => o.value === selectedAgent)
+
+  useEffect(() => {
+    setSelectedAgent(defaultAgent)
+  }, [defaultAgent])
 
   function handleSubmit() {
     const trimmed = inputValue.trim()

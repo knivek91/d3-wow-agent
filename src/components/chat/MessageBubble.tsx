@@ -1,6 +1,6 @@
 import AgentBadge from './AgentBadge'
 import { cn } from '#/lib/utils.ts'
-import type { AgentType } from '#/types/agent.ts'
+import { type AgentType, AGENT_OPTIONS } from '#/types/agent.ts'
 
 interface MessageBubbleProps {
   role: 'user' | 'assistant'
@@ -20,6 +20,7 @@ export default function MessageBubble({
   createdAt,
 }: MessageBubbleProps) {
   const isUser = role === 'user'
+  const agentOption = agentType ? AGENT_OPTIONS.find((o) => o.value === agentType) : undefined
   const formattedTime = createdAt && !isNaN(new Date(createdAt).getTime())
     ? new Date(createdAt).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })
     : undefined
@@ -48,7 +49,7 @@ export default function MessageBubble({
       <div className="flex items-center gap-2 mt-1 px-1">
         {!isUser && agentType && (
           <span className="text-[10px] text-muted-foreground">
-            {agentType === 'd3' ? '🐉 D3' : '🐻 WoW'}
+            {agentOption?.icon} {agentOption?.label}
           </span>
         )}
         {formattedTime && (

@@ -4,14 +4,9 @@ import ConversationItem from './ConversationItem'
 import { Button } from '#/components/ui/button.tsx'
 import { Input } from '#/components/ui/input.tsx'
 import { Separator } from '#/components/ui/separator.tsx'
-import type { AgentType } from '#/types/agent.ts'
-
-interface Conversation {
-  id: string
-  title: string
-  agentType: AgentType
-  createdAt: string
-}
+import { Plus } from 'lucide-react'
+import { type AgentType, AGENT_OPTIONS } from '#/types/agent.ts'
+import type { Conversation } from '#/lib/api.ts'
 
 interface SidebarProps {
   conversations: Conversation[]
@@ -91,9 +86,7 @@ export default function Sidebar({
           className="text-primary"
           title="Nueva conversación"
         >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-          </svg>
+          <Plus className="w-4 h-4" />
         </Button>
         <div className="flex-1 flex flex-col items-center gap-1 mt-2 overflow-y-auto">
           {conversations.slice(0, 8).map((c) => (
@@ -108,7 +101,7 @@ export default function Sidebar({
               )}
               title={c.title}
             >
-              {c.agentType === 'd3' ? '🐉' : '🐻'}
+              {AGENT_OPTIONS.find((o) => o.value === c.agentType)?.icon}
             </Button>
           ))}
         </div>
@@ -188,9 +181,7 @@ export default function Sidebar({
             onClick={onNewChat}
             className="flex items-center justify-center gap-2 w-full"
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-            </svg>
+            <Plus className="w-4 h-4" />
             Nueva conversación
           </Button>
         </div>
@@ -220,7 +211,7 @@ export default function Sidebar({
                 )}
                 title={c.title}
               >
-                {c.agentType === 'd3' ? '🐉' : '🐻'}
+                {AGENT_OPTIONS.find((o) => o.value === c.agentType)?.icon}
               </Button>
             ))}
           </div>
@@ -231,9 +222,7 @@ export default function Sidebar({
             className="text-primary"
             title="Nueva conversación"
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-            </svg>
+            <Plus className="w-4 h-4" />
           </Button>
         </div>
       )}
