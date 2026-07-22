@@ -11,6 +11,7 @@ export interface Conversation {
   id: string
   title: string
   agentType: AgentType
+  userId: string
   createdAt: string
   updatedAt: string
 }

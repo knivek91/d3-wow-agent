@@ -1,6 +1,7 @@
 import { createServerFn } from '@tanstack/react-start'
 import { z } from 'zod'
 import { env } from 'cloudflare:workers'
+import { getRequest } from '@tanstack/react-start/server'
 import { createDb } from '../db/index'
 import { conversations, messages } from '../db/schema'
 import { eq, desc } from 'drizzle-orm'
@@ -8,17 +9,27 @@ import { runAgent } from '../lib/agents/base'
 import { createLogger } from '../lib/observability/logger'
 import { buildContext } from '../lib/agents/context'
 import { createSharedTools } from '../lib/tools/index'
+import { createAuth } from '../lib/auth'
 
-// DB binding from Cloudflare Workers environment
 function getDb() {
   return createDb(env as { d3_wow_db: import('drizzle-orm/d1').DrizzleD1Database })
+}
+
+async function getSession() {
+  const request = getRequest()
+  const auth = createAuth(env as Env)
+  return auth.api.getSession({ headers: request.headers })
 }
 
 export const listConversationsFn = createServerFn({ method: 'GET' })
   .handler(async () => {
     try {
+      const session = await getSession()
+      if (!session) return { data: [], error: 'Unauthorized' }
+
       const db = getDb()
       const all = await db.query.conversations.findMany({
+        where: eq(conversations.userId, session.user.id),
         orderBy: [desc(conversations.updatedAt)],
       })
       return { data: all as any[], error: null }
@@ -37,12 +48,16 @@ export const createConversationFn = createServerFn({ method: 'POST' })
   )
   .handler(async ({ data }) => {
     try {
+      const session = await getSession()
+      if (!session) return { data: null, error: 'Unauthorized' }
+
       const db = getDb()
       const id = crypto.randomUUID()
       await db.insert(conversations).values({
         id,
         title: data.title,
         agentType: data.agentType,
+        userId: session.user.id,
       })
       const conv = await db.query.conversations.findFirst({
         where: eq(conversations.id, id),
@@ -59,8 +74,13 @@ export const deleteConversationFn = createServerFn({ method: 'POST' })
   .validator(z.object({ id: z.string() }))
   .handler(async ({ data }) => {
     try {
+      const session = await getSession()
+      if (!session) return { data: false, error: 'Unauthorized' }
+
       const db = getDb()
-      await db.delete(conversations).where(eq(conversations.id, data.id))
+      await db.delete(conversations).where(
+        eq(conversations.id, data.id),
+      )
       return { data: true, error: null }
     } catch (e) {
       return { data: false, error: 'Failed to delete conversation' }
@@ -71,6 +91,9 @@ export const listMessagesFn = createServerFn({ method: 'GET' })
   .validator(z.object({ conversationId: z.string() }))
   .handler(async ({ data }) => {
     try {
+      const session = await getSession()
+      if (!session) return { data: [], error: 'Unauthorized' }
+
       const db = getDb()
       const msgs = await db.query.messages.findMany({
         where: eq(messages.conversationId, data.conversationId),
@@ -91,6 +114,9 @@ export const sendMessageFn = createServerFn({ method: 'POST' })
     })
   )
   .handler(async ({ data }) => {
+    const session = await getSession()
+    if (!session) return { data: null, error: 'Unauthorized' }
+
     const { conversationId, message, agentType } = data
     const db = getDb()
     const requestId = crypto.randomUUID()
@@ -104,6 +130,9 @@ export const sendMessageFn = createServerFn({ method: 'POST' })
       })
       if (!conv) {
         return { data: null, error: 'Conversation not found' }
+      }
+      if (conv.userId !== session.user.id) {
+        return { data: null, error: 'Forbidden' }
       }
 
       const history = await db.query.messages.findMany({

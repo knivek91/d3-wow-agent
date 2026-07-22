@@ -5,7 +5,8 @@ interface __BaseEnv_Env {
 	d3_wow_db: D1Database;
 	GROQ_API_KEY: string;
 	GEMINI_API_KEY: string;
-	AUTH_CREDENTIALS: string;
+	BETTER_AUTH_SECRET: string;
+	BETTER_AUTH_URL: string;
 }
 declare namespace Cloudflare {
 	interface Env extends __BaseEnv_Env {}
@@ -15,7 +16,7 @@ type StringifyValues<EnvType extends Record<string, unknown>> = {
 	[Binding in keyof EnvType]: EnvType[Binding] extends string ? EnvType[Binding] : string;
 };
 declare namespace NodeJS {
-	interface ProcessEnv extends StringifyValues<Pick<Cloudflare.Env, "GROQ_API_KEY" | "GEMINI_API_KEY">> {}
+	interface ProcessEnv extends StringifyValues<Pick<Cloudflare.Env, "GROQ_API_KEY" | "GEMINI_API_KEY" | "BETTER_AUTH_SECRET" | "BETTER_AUTH_URL">> {}
 }
 
 // Begin runtime types
