@@ -6,4 +6,4 @@ export const authClient = createAuthClient({
   plugins: [tanstackStartCookies()],
 })
 
-export const { signIn, signUp, signOut, useSession } = authClient
+export const { signIn, signOut, useSession } = authClient

@@ -5,21 +5,21 @@
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
-	"main": "@tanstack/react-start/server-entry",
+	"main": "./src/worker.ts",
 	"observability": {
 		"enabled": true
 	},
 	"upload_source_maps": true,
 	"workers_dev": true,
 	"vars": {
-		"BETTER_AUTH_SECRET": "",
 		"BETTER_AUTH_URL": "http://localhost:3000"
 	},
 	"d1_databases": [
 		{
 			"binding": "d3_wow_db",
 			"database_name": "d3-wow-db",
-			"database_id": "cbb1d0f0-2266-4088-9ccb-6e7a73895870"
+			"database_id": "cbb1d0f0-2266-4088-9ccb-6e7a73895870",
+			"migrations_dir": "drizzle/migrations"
 		}
 	]
 }

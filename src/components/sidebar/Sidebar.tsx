@@ -4,7 +4,8 @@ import ConversationItem from './ConversationItem'
 import { Button } from '#/components/ui/button.tsx'
 import { Input } from '#/components/ui/input.tsx'
 import { Separator } from '#/components/ui/separator.tsx'
-import { Plus } from 'lucide-react'
+import { authClient } from '#/lib/auth-client.js'
+import { Plus, LogOut } from 'lucide-react'
 import { type AgentType, AGENT_OPTIONS } from '#/types/agent.ts'
 import type { Conversation } from '#/lib/api.ts'
 
@@ -185,6 +186,16 @@ export default function Sidebar({
             Nueva conversación
           </Button>
         </div>
+        <div className="px-3 pb-3 border-t border-border">
+          <Button
+            variant="ghost"
+            onClick={() => authClient.signOut({ callbackURL: '/auth/login' })}
+            className="flex items-center justify-center gap-2 w-full text-muted-foreground text-xs hover:text-destructive"
+          >
+            <LogOut className="w-3.5 h-3.5" />
+            Cerrar sesión
+          </Button>
+        </div>
       </div>
 
       {/* ── Desktop collapsed sidebar: shown on desktop when collapsed ── */}
@@ -223,6 +234,15 @@ export default function Sidebar({
             title="Nueva conversación"
           >
             <Plus className="w-4 h-4" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => authClient.signOut({ callbackURL: '/auth/login' })}
+            className="text-muted-foreground hover:text-destructive mt-auto"
+            title="Cerrar sesión"
+          >
+            <LogOut className="w-4 h-4" />
           </Button>
         </div>
       )}

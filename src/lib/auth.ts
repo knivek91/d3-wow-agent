@@ -10,21 +10,13 @@ export function createAuth(env: Env) {
     database: drizzleAdapter(createDb(env), {
       provider: "sqlite",
       schema,
-      usePlural: true,
+      usePlural: false,
     }),
-    emailAndPassword: {
-      enabled: true,
-    },
     socialProviders: {
       discord: {
-        clientId: "",
-        clientSecret: "",
-        disabled: true,
-      },
-      google: {
-        clientId: "",
-        clientSecret: "",
-        disabled: true,
+        clientId: env.DISCORD_CLIENT_ID,
+        clientSecret: env.DISCORD_CLIENT_SECRET,
+        disabled: !env.DISCORD_CLIENT_ID || !env.DISCORD_CLIENT_SECRET,
       },
     },
     session: {

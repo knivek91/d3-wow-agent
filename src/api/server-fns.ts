@@ -78,6 +78,12 @@ export const deleteConversationFn = createServerFn({ method: 'POST' })
       if (!session) return { data: false, error: 'Unauthorized' }
 
       const db = getDb()
+      const conv = await db.query.conversations.findFirst({
+        where: eq(conversations.id, data.id),
+      })
+      if (!conv) return { data: false, error: 'Conversation not found' }
+      if (conv.userId !== session.user.id) return { data: false, error: 'Forbidden' }
+
       await db.delete(conversations).where(
         eq(conversations.id, data.id),
       )
@@ -95,6 +101,12 @@ export const listMessagesFn = createServerFn({ method: 'GET' })
       if (!session) return { data: [], error: 'Unauthorized' }
 
       const db = getDb()
+      const conv = await db.query.conversations.findFirst({
+        where: eq(conversations.id, data.conversationId),
+      })
+      if (!conv) return { data: [], error: 'Conversation not found' }
+      if (conv.userId !== session.user.id) return { data: [], error: 'Forbidden' }
+
       const msgs = await db.query.messages.findMany({
         where: eq(messages.conversationId, data.conversationId),
         orderBy: [messages.createdAt],
@@ -191,4 +203,10 @@ export const sendMessageFn = createServerFn({ method: 'POST' })
       logger?.error({ error }, 'Chat handler failed')
       return { data: null, error: 'Failed to process chat' }
     }
+  })
+
+export const requireAuthFn = createServerFn({ method: 'GET' })
+  .handler(async () => {
+    const session = await getSession()
+    return { authenticated: !!session }
   })
