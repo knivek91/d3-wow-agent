@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dungeon Master AI - Party Chat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@600;700;800&amp;family=Geist:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-error": "#690005",
+                        "on-surface": "#e9e1d8",
+                        "on-secondary": "#313030",
+                        "on-primary-fixed-variant": "#5d4201",
+                        "on-tertiary": "#002e6a",
+                        "outline": "#9a8f80",
+                        "primary-container": "#c5a059",
+                        "on-primary": "#412d00",
+                        "on-secondary-container": "#bab8b7",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-surface-variant": "#d1c5b4",
+                        "surface-variant": "#38342e",
+                        "surface-dim": "#16130e",
+                        "on-tertiary-fixed": "#001a42",
+                        "primary-fixed-dim": "#e9c176",
+                        "background": "#16130e",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "surface-container-low": "#1e1b16",
+                        "inverse-primary": "#775a19",
+                        "surface-bright": "#3d3933",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#474646",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "surface": "#16130e",
+                        "error-container": "#93000a",
+                        "secondary-container": "#4a4949",
+                        "surface-tint": "#e9c176",
+                        "on-tertiary-container": "#00387e",
+                        "surface-container": "#231f1a",
+                        "primary-fixed": "#ffdea5",
+                        "on-primary-fixed": "#261900",
+                        "secondary-fixed-dim": "#c9c6c5",
+                        "inverse-surface": "#e9e1d8",
+                        "secondary": "#c9c6c5",
+                        "outline-variant": "#4e4639",
+                        "tertiary-container": "#76a4ff",
+                        "on-primary-container": "#4e3700",
+                        "primary": "#e9c176",
+                        "tertiary-fixed": "#d8e2ff",
+                        "surface-container-lowest": "#110e09",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "surface-container-high": "#2d2924",
+                        "inverse-on-surface": "#34302a",
+                        "error": "#ffb4ab",
+                        "on-background": "#e9e1d8",
+                        "tertiary": "#adc6ff",
+                        "surface-container-highest": "#38342e"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "xl": "40px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "unit": "4px",
+                        "margin-desktop": "48px",
+                        "md": "16px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "2xl": "64px",
+                        "xs": "4px"
+                    },
+                    fontFamily: {
+                        "display-lg": ["Epilogue"],
+                        "headline-md": ["Epilogue"],
+                        "headline-lg-mobile": ["Epilogue"],
+                        "label-md": ["Geist"],
+                        "body-md": ["Geist"],
+                        "body-lg": ["Geist"],
+                        "headline-lg": ["Epilogue"]
+                    },
+                    fontSize: {
+                        "display-lg": ["48px", { lineHeight: "1.1", letterSpacing: "-0.04em", fontWeight: "800" }],
+                        "headline-md": ["24px", { lineHeight: "1.3", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "headline-lg-mobile": ["28px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "label-md": ["14px", { lineHeight: "1", letterSpacing: "0.05em", fontWeight: "500" }],
+                        "body-md": ["16px", { lineHeight: "1.5", letterSpacing: "0em", fontWeight: "400" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", letterSpacing: "0em", fontWeight: "400" }],
+                        "headline-lg": ["32px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "700" }]
+                    }
+                }
+            }
+        };
+    </script>
+<style>
+        body {
+            background-color: #0e0e0e;
+            color: #e9e1d8;
+        }
+        
+        .glass-panel {
+            background: rgba(35, 31, 26, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .gold-glow {
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.2);
+        }
+        
+        /* Custom scrollbar for chat area */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden font-body-md antialiased text-on-background bg-background">
+<!-- Top App Bar (Mobile Only via JSON intent, though instructed to hide if unneeded, we keep as per strict instructions if 'Party Chat' is active) -->
+<header class="md:hidden w-full h-16 border-b border-white/10 bg-surface-dim/40 backdrop-blur-md flex justify-between items-center px-lg fixed top-0 z-50">
+<div class="font-display-lg text-display-lg text-primary text-[24px] font-bold">Dungeon Master AI</div>
+<div class="flex gap-4 items-center">
+<span class="text-on-surface-variant cursor-pointer active:opacity-70"><span class="material-symbols-outlined">more_vert</span></span>
+</div>
+</header>
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden lg:flex flex-col h-full p-md gap-sm w-64 border-r border-white/10 bg-surface-container/80 backdrop-blur-md z-40">
+<div class="mb-lg px-sm">
+<h1 class="font-display-lg text-display-lg text-primary text-[28px]">Dungeon Master AI</h1>
+<p class="text-on-surface-variant font-label-md mt-2">Level 99 AI Assistant</p>
+</div>
+<button class="w-full py-3 mb-6 rounded-lg bg-gradient-to-r from-primary to-primary-fixed text-on-primary font-label-md font-bold hover:shadow-[0_0_20px_rgba(197,160,89,0.3)] transition-all duration-300">
+            New Chat
+        </button>
+<div class="flex flex-col gap-2 flex-grow">
+<!-- Active state for 'Conversations' -->
+<a class="flex items-center gap-3 p-3 bg-primary-container text-on-primary-container rounded-lg font-bold shadow-[0_0_15px_rgba(197,160,89,0.3)] transition-all duration-300 ease-out active:scale-95" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-label-md">Conversations</span>
+</a>
+<!-- Inactive tabs -->
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:text-on-surface hover:bg-white/5 hover:backdrop-blur-lg rounded-lg transition-all duration-300 ease-out active:scale-95" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:text-on-surface hover:bg-white/5 hover:backdrop-blur-lg rounded-lg transition-all duration-300 ease-out active:scale-95" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-label-md">Lore Library</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:text-on-surface hover:bg-white/5 hover:backdrop-blur-lg rounded-lg transition-all duration-300 ease-out active:scale-95" href="#">
+<span class="material-symbols-outlined">person_play</span>
+<span class="font-label-md">Character Sheet</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:text-on-surface hover:bg-white/5 hover:backdrop-blur-lg rounded-lg transition-all duration-300 ease-out active:scale-95" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md">Settings</span>
+</a>
+</div>
+<div class="mt-auto pt-4 border-t border-white/10 flex items-center gap-3 px-sm">
+<div class="w-10 h-10 rounded-full bg-surface-variant border border-white/10 overflow-hidden">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="A highly detailed close-up of a brooding dark fantasy character portrait. The character is a scarred warrior with glowing amber eyes, wearing intricately etched dark iron armor. The lighting is low and atmospheric, emphasizing the 'Neo-Ethereal' aesthetic with deep blacks and sharp gold rim lighting. The overall mood is intense, premium, and cinematic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs6KCPUNhKw_igcIahyqMr42uzO28aax4Ui-xNEXi_4CrkzhSJt_gG4k0t6me_0S-KtccjWehI1y8Vq4WWoTcKdNLlnib2IiU96EHeTptjQ9zfoH8yNPMpN9iVEv5ZY8bxoUh0XplIHGaO8uNajebB-1j8cZ1ec-GB-Or8dOyhpYo-dR0HoDW_c_tGL0-gjVzbOGful5AvQ2WxvLR8DYsj2NyPzoAcg45m14sDL2MiEZpGRJkJpAGZ"/>
+</div>
+<span class="font-label-md text-on-surface">Archmage</span>
+</div>
+</nav>
+<!-- Main Canvas -->
+<main class="flex-1 flex flex-col relative h-full pt-16 md:pt-0">
+<!-- Ambient background bloom -->
+<div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl mix-blend-screen"></div>
+<div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-tertiary/5 rounded-full blur-3xl mix-blend-screen"></div>
+</div>
+<!-- Header / Context Area -->
+<div class="z-10 w-full px-lg py-md border-b border-white/10 glass-panel flex justify-between items-center shrink-0">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">The Whispering Vault</h2>
+<p class="font-label-md text-on-surface-variant">Sanctuary Eternal - Quest Active</p>
+</div>
+<div class="hidden md:flex items-center gap-4">
+<span class="px-3 py-1 rounded-full border border-white/10 bg-surface/50 text-primary font-label-md text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+                    Archive Mode
+                </span>
+</div>
+</div>
+<!-- Chat History -->
+<div class="flex-1 overflow-y-auto p-4 md:p-lg lg:p-margin-desktop flex flex-col gap-6 z-10 pb-32 scroll-smooth">
+<!-- Agent Message (Archivist) -->
+<div class="flex flex-col gap-2 max-w-[85%] self-start">
+<div class="flex items-center gap-2 pl-2">
+<span class="material-symbols-outlined text-primary text-[20px]">auto_stories</span>
+<span class="font-label-md text-primary font-bold tracking-wider uppercase text-xs">The Archivist</span>
+</div>
+<div class="glass-panel p-md rounded-2xl rounded-tl-sm relative group">
+<div class="absolute left-0 top-0 bottom-0 w-[2px] bg-primary rounded-l-sm opacity-50 group-hover:opacity-100 transition-opacity"></div>
+<p class="font-body-md text-on-surface leading-relaxed">
+                        The heavy obsidian doors of the Vault groan open, dust cascading from the intricate runes carved into their surface. A cold, unnatural breeze sweeps past you, carrying the scent of ozone and ancient parchment. 
+                    </p>
+<p class="font-body-md text-on-surface leading-relaxed mt-4">
+                        "Enter, seekers," a disembodied voice echoes from the darkness within. "The knowledge you desire slumbers here, but it demands an offering of memory."
+                    </p>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex flex-col gap-2 max-w-[85%] self-end items-end">
+<div class="flex items-center gap-2 pr-2">
+<span class="font-label-md text-on-surface-variant tracking-wider uppercase text-xs">You</span>
+</div>
+<div class="bg-surface-bright/80 backdrop-blur-md border border-white/5 p-md rounded-2xl rounded-tr-sm text-on-surface">
+<p class="font-body-md">
+                        I step forward cautiously, drawing the Luminescent Blade. "What kind of memory? Are we talking childhood regrets or tactical knowledge?"
+                    </p>
+</div>
+</div>
+<!-- Agent Response with Options/Data -->
+<div class="flex flex-col gap-2 max-w-[85%] self-start">
+<div class="flex items-center gap-2 pl-2">
+<span class="material-symbols-outlined text-primary text-[20px]">auto_stories</span>
+<span class="font-label-md text-primary font-bold tracking-wider uppercase text-xs">The Archivist</span>
+</div>
+<div class="glass-panel p-md rounded-2xl rounded-tl-sm relative">
+<div class="absolute left-0 top-0 bottom-0 w-[2px] bg-primary rounded-l-sm opacity-70 gold-glow"></div>
+<p class="font-body-md text-on-surface leading-relaxed mb-4">
+                        The voice chuckles, a sound like dry leaves scattering across stone. "Tactical knowledge is fleeting. We deal in the currency of the soul. A memory of profound loss, or a secret never spoken."
+                    </p>
+<!-- Nested UI Element: Action Choice -->
+<div class="bg-surface-container/50 border border-white/5 rounded-xl p-4 mt-4">
+<span class="font-label-md text-on-surface-variant block mb-3">Suggested Actions:</span>
+<div class="flex flex-wrap gap-3">
+<button class="px-4 py-2 rounded-lg border border-primary/30 hover:border-primary text-primary font-label-md transition-all hover:bg-primary/10 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">vpn_key</span>
+                                Offer a secret
+                            </button>
+<button class="px-4 py-2 rounded-lg border border-white/10 hover:border-white/30 text-on-surface font-label-md transition-all hover:bg-white/5 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">swords</span>
+                                Prepare for combat
+                            </button>
+<button class="px-4 py-2 rounded-lg border border-white/10 hover:border-white/30 text-on-surface font-label-md transition-all hover:bg-white/5 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">search</span>
+                                Investigate the runes
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Input Area -->
+<div class="absolute bottom-0 left-0 right-0 p-4 md:p-6 z-20 bg-gradient-to-t from-background via-background/80 to-transparent pt-12">
+<div class="max-w-4xl mx-auto relative">
+<div class="glass-panel rounded-xl p-2 flex items-end gap-2 focus-within:border-primary/50 focus-within:shadow-[0_0_15px_rgba(197,160,89,0.1)] transition-all duration-300">
+<button class="p-3 text-on-surface-variant hover:text-primary transition-colors rounded-lg hover:bg-white/5 shrink-0">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+<textarea class="w-full bg-transparent border-none text-on-surface font-body-md focus:ring-0 resize-none py-3 placeholder:text-on-surface-variant/50 max-h-32 overflow-y-auto" placeholder="Describe your next action..." rows="1" style="min-height: 48px;"></textarea>
+<button class="p-3 bg-primary text-on-primary rounded-lg hover:shadow-[0_0_15px_rgba(197,160,89,0.4)] transition-all duration-300 shrink-0 transform active:scale-95">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-highest/90 backdrop-blur-xl rounded-t-xl border-t border-white/10 shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-primary bg-primary/10 rounded-xl p-2 active:scale-90 transition-transform w-16" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-md text-xs mt-1">Chat</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-white/5 rounded-xl active:scale-90 transition-transform w-16" href="#">
+<span class="material-symbols-outlined">format_image_left</span>
+<span class="font-label-md text-xs mt-1">Quests</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-white/5 rounded-xl active:scale-90 transition-transform w-16" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-xs mt-1">Vault</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-white/5 rounded-xl active:scale-90 transition-transform w-16" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-md text-xs mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

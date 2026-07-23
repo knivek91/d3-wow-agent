@@ -10,7 +10,7 @@
       "clip": true,
       "width": 1280,
       "height": 800,
-      "fill": "$bg-app",
+      "fill": "#0e0e0e",
       "children": [
         {
           "type": "frame",
@@ -21,515 +21,204 @@
           "children": [
             {
               "type": "frame",
-              "id": "TGolR",
-              "x": 0,
-              "y": 0,
-              "name": "Collapsed Sidebar",
-              "enabled": false,
-              "width": 56,
-              "height": 800,
-              "fill": "$bg-sidebar",
-              "layout": "vertical",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "M7Wkb",
-                  "name": "CS Header",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "gap": 12,
-                  "padding": [
-                    12,
-                    16
-                  ],
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "i8ICz",
-                      "name": "CS App Icon",
-                      "fill": "$accent-primary",
-                      "content": "🎮",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 18,
-                      "fontWeight": "normal"
-                    },
-                    {
-                      "type": "text",
-                      "id": "BpK4I",
-                      "name": "CS Expand",
-                      "fill": "$text-muted",
-                      "content": "▶",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 12,
-                      "fontWeight": "normal"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "Nff1e",
-                  "name": "CS Conv 1",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "padding": [
-                    14,
-                    12
-                  ],
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "PgmvP",
-                      "name": "CS D3 Icon",
-                      "fill": "$accent-d3",
-                      "content": "🐉",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 16,
-                      "fontWeight": "normal"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "m0OVD",
-                  "name": "CS Conv 2",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "padding": [
-                    14,
-                    12
-                  ],
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "RSo4t",
-                      "name": "CS WoW Icon",
-                      "fill": "$accent-wow",
-                      "content": "🐻",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 16,
-                      "fontWeight": "normal"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "aSAbj",
-                  "name": "CS Conv 3",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "padding": [
-                    14,
-                    12
-                  ],
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "CMc7O",
-                      "name": "CS WoW Icon 2",
-                      "fill": "$accent-wow",
-                      "content": "🐻",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 16,
-                      "fontWeight": "normal"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "EfqgR",
-                  "name": "CS Spacer",
-                  "width": "fill_container",
-                  "height": "fill_container",
-                  "layout": "vertical"
-                },
-                {
-                  "type": "frame",
-                  "id": "cNZXa",
-                  "name": "CS New Chat",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "padding": [
-                    12,
-                    16
-                  ],
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "gJNQ7",
-                      "name": "CS New Icon",
-                      "fill": "$accent-primary",
-                      "content": "+",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 16,
-                      "fontWeight": "normal"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
               "id": "dpX8A",
               "name": "Sidebar",
               "width": 280,
               "height": "fill_container",
-              "fill": "$bg-sidebar",
+              "fill": "#231f1acc",
               "layout": "vertical",
-              "gap": 4,
+              "gap": 8,
+              "padding": 16,
               "children": [
                 {
                   "type": "frame",
-                  "id": "mmF5l",
-                  "name": "Sidebar Header",
-                  "width": "fill_container",
-                  "gap": 8,
-                  "padding": 16,
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "y4uyt",
-                      "name": "App Title",
-                      "fill": "$text-primary",
-                      "content": "D3 / WoW Agent",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 18,
-                      "fontWeight": "700"
-                    },
-                    {
-                      "type": "frame",
-                      "id": "YuUci",
-                      "layoutPosition": "absolute",
-                      "x": 236,
-                      "y": 13,
-                      "name": "Collapse Button",
-                      "width": 28,
-                      "height": 28,
-                      "fill": "$bg-input",
-                      "cornerRadius": "$radius-sm",
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "JVTty",
-                          "name": "Collapse Icon",
-                          "fill": "$text-muted",
-                          "content": "◀",
-                          "fontFamily": "$font-sans",
-                          "fontSize": 12,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "s8so1s",
-                  "name": "Search Frame",
-                  "width": "fill_container",
+                  "id": "n1Wv7G",
+                  "name": "Brand Header",
                   "layout": "vertical",
-                  "padding": [
-                    0,
-                    16,
-                    8,
-                    16
-                  ],
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "Afh0H",
-                      "name": "Search Input",
-                      "width": "fill_container",
-                      "fill": "$bg-input",
-                      "cornerRadius": "$radius-md",
-                      "gap": 8,
-                      "padding": [
-                        8,
-                        12
-                      ],
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "W7fm7w",
-                          "name": "Search Icon",
-                          "fill": "$text-muted",
-                          "content": "🔍",
-                          "fontFamily": "$font-sans",
-                          "fontSize": 13,
-                          "fontWeight": "normal"
-                        },
-                        {
-                          "type": "text",
-                          "id": "SlyNm",
-                          "name": "Search Placeholder",
-                          "fill": "$text-muted",
-                          "content": "Buscar...",
-                          "fontFamily": "$font-sans",
-                          "fontSize": 13,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "XyTqE",
-                  "name": "New Conversation Item",
-                  "width": "fill_container",
-                  "fill": "$bg-input",
-                  "cornerRadius": "$radius-md",
-                  "gap": 10,
+                  "gap": 4,
                   "padding": [
                     12,
-                    16
-                  ],
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "YwiAl",
-                      "name": "New Conv Icon",
-                      "fill": "$accent-primary",
-                      "content": "✨",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 16,
-                      "fontWeight": "normal"
-                    },
-                    {
-                      "type": "text",
-                      "id": "YiiZg",
-                      "name": "New Conv Text",
-                      "fill": "$text-secondary",
-                      "content": "Nueva conversación...",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 13,
-                      "fontWeight": "500"
-                    },
-                    {
-                      "type": "text",
-                      "id": "KhUZV",
-                      "name": "New Conv Badge",
-                      "fill": "$text-muted",
-                      "content": "auto-naming",
-                      "fontFamily": "$font-mono",
-                      "fontSize": 10,
-                      "fontWeight": "normal"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "WzgPL",
-                  "name": "Today Label",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "padding": [
-                    20,
-                    16,
                     8,
-                    16
-                  ],
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "kTjWc",
-                      "name": "Today Text",
-                      "fill": "$text-muted",
-                      "content": "HOY",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 11,
-                      "fontWeight": "600"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "rOLbk",
-                  "name": "Conversation Item 1",
-                  "width": "fill_container",
-                  "fill": "$bg-bubble-user",
-                  "cornerRadius": "$radius-md",
-                  "gap": 10,
-                  "padding": 16,
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "K0hUee",
-                      "name": "D3 Icon",
-                      "fill": "$accent-d3",
-                      "content": "🐉",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 20,
-                      "fontWeight": "normal"
-                    },
-                    {
-                      "type": "text",
-                      "id": "Mmx3S",
-                      "name": "Conv 1 Text",
-                      "fill": "$text-primary",
-                      "content": "Build de Witch Doctor",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 13,
-                      "fontWeight": "500"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "RGFK3",
-                  "name": "Conversation Item 2",
-                  "width": "fill_container",
-                  "cornerRadius": "$radius-md",
-                  "gap": 10,
-                  "padding": 16,
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "wVzhL",
-                      "name": "WoW Icon",
-                      "fill": "$accent-wow",
-                      "content": "🐻",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 20,
-                      "fontWeight": "normal"
-                    },
-                    {
-                      "type": "text",
-                      "id": "oGaTt",
-                      "name": "Conv 2 Text",
-                      "fill": "$text-primary",
-                      "content": "M+ Healer recomendado",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 13,
-                      "fontWeight": "500"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "AwSGn",
-                  "name": "Yesterday Label",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "padding": [
-                    20,
                     16,
-                    8,
-                    16
+                    8
                   ],
                   "children": [
                     {
                       "type": "text",
-                      "id": "MFzFn",
-                      "name": "Yesterday Text",
-                      "fill": "$text-muted",
-                      "content": "AYER",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 11,
-                      "fontWeight": "600"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "n6ISt",
-                  "name": "Conversation Item 3",
-                  "width": "fill_container",
-                  "cornerRadius": "$radius-md",
-                  "gap": 10,
-                  "padding": 16,
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "L07tEy",
-                      "name": "WoW Icon 2",
-                      "fill": "$accent-wow",
-                      "content": "🐻",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 20,
-                      "fontWeight": "normal"
+                      "id": "YkxgX",
+                      "name": "Brand Title",
+                      "fill": "#e9c176",
+                      "content": "Dungeon Master AI",
+                      "fontFamily": "MedievalSharp",
+                      "fontSize": 22
                     },
                     {
                       "type": "text",
-                      "id": "z7t8dO",
-                      "name": "Conv 3 Text",
-                      "fill": "$text-primary",
-                      "content": "Raid Tindral S3",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 13,
-                      "fontWeight": "500"
+                      "id": "v68kr",
+                      "name": "Brand Subtitle",
+                      "fill": "#d1c5b4",
+                      "content": "Level 99 AI Assistant",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 11
                     }
                   ]
                 },
                 {
                   "type": "frame",
-                  "id": "FK0M4",
-                  "name": "Spacer",
-                  "width": "fill_container",
-                  "height": "fill_container",
-                  "layout": "vertical"
-                },
-                {
-                  "type": "frame",
-                  "id": "fy4vj",
+                  "id": "JtxRi",
                   "name": "New Chat Button",
                   "width": "fill_container",
-                  "fill": "$accent-primary",
-                  "cornerRadius": "$radius-md",
+                  "height": 44,
+                  "fill": "#e9c1761f",
+                  "cornerRadius": 12,
+                  "stroke": "#e9c17633",
+                  "strokeWidth": 1,
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#e9c17626",
+                    "offset": {
+                      "x": 0,
+                      "y": 2
+                    },
+                    "blur": 8
+                  },
                   "gap": 8,
-                  "padding": 16,
                   "justifyContent": "center",
                   "alignItems": "center",
                   "children": [
                     {
                       "type": "text",
-                      "id": "Mj5Ii",
+                      "id": "Mcd3M",
                       "name": "New Chat Icon",
-                      "fill": "#ffffff",
+                      "fill": "#e9c176",
                       "content": "+",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 14,
+                      "fontFamily": "DM Sans",
+                      "fontSize": 16,
                       "fontWeight": "normal"
                     },
                     {
                       "type": "text",
-                      "id": "H7qfy5",
-                      "name": "New Chat Text",
-                      "fill": "#ffffff",
-                      "content": "Nueva conversación",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 14,
+                      "id": "XLs1V",
+                      "name": "New Chat Label",
+                      "fill": "#e9c176",
+                      "content": "New Chat",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
                       "fontWeight": "600"
                     }
                   ]
                 },
                 {
                   "type": "frame",
-                  "id": "cKvIH",
-                  "name": "Divider 1",
-                  "width": "fill_container",
-                  "height": 1,
-                  "fill": "$border-subtle"
+                  "id": "FZ91L",
+                  "name": "Nav Spacer",
+                  "width": 1,
+                  "height": 8
                 },
                 {
                   "type": "frame",
-                  "id": "GEA2v",
-                  "name": "Divider 2",
+                  "id": "KoeQN",
+                  "name": "Nav Section",
                   "width": "fill_container",
-                  "height": 1,
-                  "fill": "$border-subtle"
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "c9p2O",
+                      "name": "Conversations",
+                      "width": "fill_container",
+                      "fill": "#c5a05926",
+                      "cornerRadius": 10,
+                      "stroke": "#e9c17626",
+                      "strokeWidth": 1,
+                      "gap": 12,
+                      "padding": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "siWnK",
+                          "name": "Conversations Icon",
+                          "fill": "#e9c176",
+                          "content": "💬",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 16,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "qqSNY",
+                          "name": "Conversations Label",
+                          "fill": "#e9c176",
+                          "content": "Conversations",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "TREpb",
+                  "name": "Nav Flex Spacer",
+                  "width": 1,
+                  "height": "fill_container"
+                },
+                {
+                  "type": "frame",
+                  "id": "UwNBZ",
+                  "name": "User Section",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "padding": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "iytWH",
+                      "name": "Avatar",
+                      "width": 44,
+                      "height": 44,
+                      "fill": "#1a1510",
+                      "cornerRadius": 22,
+                      "stroke": "#e9c176",
+                      "strokeWidth": 2,
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#e9c17633",
+                        "offset": {
+                          "x": 0,
+                          "y": 2
+                        },
+                        "blur": 8
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "c0wvkj",
+                          "name": "Avatar Icon",
+                          "fill": "#e9c176",
+                          "content": "A",
+                          "fontFamily": "MedievalSharp",
+                          "fontSize": 20
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "Pmk9c",
+                      "name": "Avatar Name",
+                      "fill": "#e9e1d8",
+                      "content": "Archmage",
+                      "fontFamily": "MedievalSharp",
+                      "fontSize": 13
+                    }
+                  ]
                 }
               ]
             },
@@ -539,268 +228,199 @@
               "name": "Chat Area",
               "width": "fill_container",
               "height": "fill_container",
-              "fill": "$bg-chat",
+              "fill": "#0e0e0e",
               "layout": "vertical",
               "children": [
                 {
                   "type": "frame",
-                  "id": "Io04A",
+                  "id": "EKE6d",
                   "name": "Chat Header",
                   "width": "fill_container",
-                  "stroke": "$border-subtle",
-                  "strokeWidth": {
-                    "bottom": 1
-                  },
-                  "gap": 12,
+                  "gap": 16,
                   "padding": [
-                    12,
-                    20
+                    14,
+                    24
                   ],
                   "alignItems": "center",
                   "children": [
                     {
                       "type": "frame",
-                      "id": "Zgl9m",
-                      "name": "Agent Badge",
-                      "fill": "$accent-d3",
-                      "cornerRadius": 9999,
-                      "gap": 6,
-                      "padding": [
-                        6,
-                        12
-                      ],
-                      "alignItems": "center",
+                      "id": "blRyI",
+                      "name": "Header Left",
+                      "layout": "vertical",
+                      "gap": 2,
                       "children": [
                         {
                           "type": "text",
-                          "id": "P0OxrE",
-                          "name": "Badge Icon",
-                          "fill": "#000000",
-                          "content": "🐉",
-                          "fontFamily": "$font-sans",
-                          "fontSize": 13,
-                          "fontWeight": "normal"
+                          "id": "F1YJku",
+                          "name": "Header Title",
+                          "fill": "#e9e1d8",
+                          "content": "The Whispering Vault",
+                          "fontFamily": "MedievalSharp",
+                          "fontSize": 22,
+                          "letterSpacing": -0.01
                         },
                         {
                           "type": "text",
-                          "id": "CKijP",
-                          "name": "Badge Text",
-                          "fill": "#000000",
-                          "content": "D3",
-                          "fontFamily": "$font-sans",
-                          "fontSize": 12,
-                          "fontWeight": "600"
+                          "id": "II1Kw",
+                          "name": "Header Subtitle",
+                          "fill": "#d1c5b4",
+                          "content": "Sanctuary Eternal - Quest Active",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 12
                         }
                       ]
                     },
                     {
-                      "type": "text",
-                      "id": "wIouV",
-                      "name": "Chat Title",
-                      "fill": "$text-secondary",
-                      "content": "Conversación actual",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 15,
-                      "fontWeight": "600"
-                    },
-                    {
                       "type": "frame",
-                      "id": "JZoDi",
+                      "id": "it7KM",
                       "name": "Header Spacer",
                       "width": "fill_container",
-                      "height": 1,
-                      "layout": "none"
-                    },
-                    {
-                      "type": "text",
-                      "id": "HlJkq",
-                      "name": "Model Badge",
-                      "fill": "$text-muted",
-                      "content": "groq · 120 tok",
-                      "fontFamily": "$font-mono",
-                      "fontSize": 11,
-                      "fontWeight": "normal"
+                      "height": 1
                     }
                   ]
                 },
                 {
                   "type": "frame",
-                  "id": "rrBG7",
+                  "id": "McqO2",
                   "name": "Messages Area",
                   "width": "fill_container",
                   "height": "fill_container",
                   "layout": "vertical",
-                  "gap": 16,
+                  "gap": 24,
                   "padding": [
-                    16,
-                    20
+                    24,
+                    40,
+                    120,
+                    40
                   ],
                   "children": [
                     {
-                      "type": "frame",
-                      "id": "WmlJU",
-                      "name": "User Message",
-                      "width": "fill_container",
-                      "layout": "vertical",
-                      "gap": 4,
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "vwSC2",
-                          "name": "User Bubble",
-                          "width": "fill_container",
-                          "fill": "$bg-bubble-user",
-                          "cornerRadius": "$radius-lg",
-                          "gap": 8,
-                          "padding": [
-                            10,
-                            14
-                          ],
-                          "justifyContent": "end",
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "h71XjP",
-                              "name": "User Avatar",
-                              "content": "🧑",
-                              "fontFamily": "$font-sans",
-                              "fontSize": 14,
-                              "fontWeight": "normal"
-                            },
-                            {
-                              "type": "text",
-                              "id": "w7GWtb",
-                              "name": "User Text",
-                              "fill": "$text-primary",
-                              "textGrowth": "fixed-width",
-                              "width": "fill_container",
-                              "content": "¿Qué build de Witch Doctor es meta esta temporada?",
-                              "fontFamily": "$font-sans",
-                              "fontSize": 14,
-                              "fontWeight": "normal"
-                            }
-                          ]
+                      "type": "ellipse",
+                      "id": "WvjjO",
+                      "layoutPosition": "absolute",
+                      "x": -100,
+                      "y": 100,
+                      "name": "Chat Ambient Glow",
+                      "opacity": 0.04,
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "radial",
+                        "enabled": true,
+                        "rotation": 0,
+                        "size": {
+                          "width": 1,
+                          "height": 1
                         },
-                        {
-                          "type": "frame",
-                          "id": "EOGN4",
-                          "name": "User Meta",
-                          "gap": 6,
-                          "justifyContent": "end",
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "X2xC7R",
-                              "name": "User Time",
-                              "fill": "$text-muted",
-                              "content": "hace 10s · D3",
-                              "fontFamily": "$font-sans",
-                              "fontSize": 11,
-                              "fontWeight": "normal"
-                            }
-                          ]
-                        }
-                      ]
+                        "colors": [
+                          {
+                            "color": "#e9c176",
+                            "position": 0
+                          },
+                          {
+                            "color": "#e9c176",
+                            "position": 1
+                          }
+                        ]
+                      },
+                      "width": 400,
+                      "height": 400
                     },
                     {
                       "type": "frame",
-                      "id": "iHkn9",
-                      "name": "Assistant Message",
-                      "width": "fill_container",
+                      "id": "AkNgR",
+                      "name": "Agent Message 1",
                       "layout": "vertical",
-                      "gap": 4,
+                      "gap": 8,
                       "children": [
                         {
                           "type": "frame",
-                          "id": "gQOh8",
-                          "name": "Assistant Badge",
-                          "gap": 6,
+                          "id": "w703ou",
+                          "name": "Agent 1 Label",
+                          "gap": 8,
+                          "padding": [
+                            0,
+                            0,
+                            4,
+                            12
+                          ],
                           "alignItems": "center",
                           "children": [
                             {
                               "type": "text",
-                              "id": "nrjfq",
-                              "name": "Assistant Badge Icon",
-                              "fill": "$accent-d3",
-                              "content": "🐉",
-                              "fontFamily": "$font-sans",
-                              "fontSize": 12,
+                              "id": "k9zyhs",
+                              "name": "Agent 1 Icon",
+                              "fill": "#e9c176",
+                              "content": "📖",
+                              "fontFamily": "Geist",
+                              "fontSize": 16,
                               "fontWeight": "normal"
                             },
                             {
                               "type": "text",
-                              "id": "XuQLu",
-                              "name": "Assistant Badge Agent",
-                              "fill": "$text-muted",
-                              "content": "D3 · groq · 120 tok · 2s",
-                              "fontFamily": "$font-mono",
+                              "id": "i3la8",
+                              "name": "Agent 1 Name",
+                              "fill": "#e9c176",
+                              "content": "THE ARCHIVIST",
+                              "fontFamily": "MedievalSharp",
                               "fontSize": 11,
-                              "fontWeight": "normal"
+                              "letterSpacing": 0.08
                             }
                           ]
                         },
                         {
                           "type": "frame",
-                          "id": "OmU7P",
-                          "name": "Assistant Bubble",
-                          "width": "fill_container",
-                          "fill": "$bg-bubble-assistant",
-                          "cornerRadius": "$radius-lg",
+                          "id": "PnhEc",
+                          "name": "Agent 1 Bubble",
+                          "fill": "#231f1a80",
+                          "cornerRadius": 20,
+                          "stroke": "#ffffff14",
+                          "strokeWidth": 1,
+                          "effect": {
+                            "type": "background_blur",
+                            "radius": 12
+                          },
                           "layout": "vertical",
-                          "gap": 6,
+                          "gap": 12,
                           "padding": [
-                            10,
-                            14
+                            16,
+                            20
                           ],
                           "children": [
                             {
-                              "type": "text",
-                              "id": "pKhcl",
-                              "name": "Assistant Text 1",
-                              "fill": "$text-primary",
-                              "textGrowth": "fixed-width",
-                              "width": "fill_container",
-                              "content": "• Set: Mundunugu's Regalia (6 piezas)",
-                              "fontFamily": "$font-sans",
-                              "fontSize": 14,
-                              "fontWeight": "normal"
+                              "type": "frame",
+                              "id": "j5gZJ2",
+                              "layoutPosition": "absolute",
+                              "x": 0,
+                              "y": 0,
+                              "name": "Agent 1 Accent",
+                              "opacity": 0.6,
+                              "width": 3,
+                              "height": 140,
+                              "fill": "#e9c176",
+                              "cornerRadius": 2
                             },
                             {
                               "type": "text",
-                              "id": "i4X1K",
-                              "name": "Assistant Text 2",
-                              "fill": "$text-primary",
+                              "id": "VUMpa",
+                              "name": "Agent 1 Text 1",
+                              "fill": "#e9e1d8",
                               "textGrowth": "fixed-width",
-                              "width": "fill_container",
-                              "content": "• Arma: The Barber (dagger ceremonial)",
-                              "fontFamily": "$font-sans",
-                              "fontSize": 14,
-                              "fontWeight": "normal"
+                              "width": 420,
+                              "content": "The heavy obsidian doors of the Vault groan open, dust cascading from the intricate runes carved into their surface. A cold, unnatural breeze sweeps past you, carrying the scent of ozone and ancient parchment.",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 14
                             },
                             {
                               "type": "text",
-                              "id": "S4iDu",
-                              "name": "Assistant Text 3",
-                              "fill": "$text-primary",
+                              "id": "V1SjSM",
+                              "name": "Agent 1 Text 2",
+                              "fill": "#e9e1d8",
                               "textGrowth": "fixed-width",
-                              "width": "fill_container",
-                              "content": "• Gemas: Bane of the Trapped, Enforcer, Gogok",
-                              "fontFamily": "$font-sans",
-                              "fontSize": 14,
-                              "fontWeight": "normal"
-                            },
-                            {
-                              "type": "text",
-                              "id": "I1R6O",
-                              "name": "Assistant Text 4",
-                              "fill": "$text-primary",
-                              "textGrowth": "fixed-width",
-                              "width": "fill_container",
-                              "content": "• Cubo: Furnace, Mantle of Channeling, CoE",
-                              "fontFamily": "$font-sans",
-                              "fontSize": 14,
-                              "fontWeight": "normal"
+                              "width": 420,
+                              "content": "\"Enter, seekers,\" a disembodied voice echoes from the darkness within. \"The knowledge you desire slumbers here, but it demands an offering of memory.\"",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 14
                             }
                           ]
                         }
@@ -808,67 +428,268 @@
                     },
                     {
                       "type": "frame",
-                      "id": "GGMZp",
-                      "name": "User Message 2",
-                      "width": "fill_container",
+                      "id": "DaPTn",
+                      "name": "User Message 1",
                       "layout": "vertical",
-                      "gap": 4,
+                      "gap": 8,
+                      "alignItems": "end",
                       "children": [
                         {
                           "type": "frame",
-                          "id": "P9JywK",
-                          "name": "User Bubble 2",
-                          "width": "fill_container",
-                          "fill": "$bg-bubble-user",
-                          "cornerRadius": "$radius-lg",
+                          "id": "twDXW",
+                          "name": "User 1 Bubble",
+                          "fill": "#3d3933b3",
+                          "cornerRadius": 20,
+                          "stroke": "#ffffff0f",
+                          "strokeWidth": 1,
+                          "layout": "vertical",
+                          "padding": [
+                            16,
+                            20
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "OUUPj",
+                              "name": "User 1 Text",
+                              "fill": "#e9e1d8",
+                              "textGrowth": "fixed-width",
+                              "width": 380,
+                              "content": "I step forward cautiously, drawing the Luminescent Blade. 'What kind of memory? Are we talking childhood regrets or tactical knowledge?'",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 14
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Q9QJP9",
+                      "name": "Agent Message 2",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "bOE8e",
+                          "name": "Agent 2 Label",
                           "gap": 8,
                           "padding": [
-                            10,
-                            14
+                            0,
+                            0,
+                            4,
+                            12
                           ],
-                          "justifyContent": "end",
                           "alignItems": "center",
                           "children": [
                             {
                               "type": "text",
-                              "id": "Qq3T8",
-                              "name": "User Avatar 2",
-                              "fill": "$text-primary",
-                              "content": "🧑",
-                              "fontFamily": "$font-sans",
-                              "fontSize": 14,
+                              "id": "BoUkp",
+                              "name": "Agent 2 Icon",
+                              "fill": "#e9c176",
+                              "content": "📖",
+                              "fontFamily": "Geist",
+                              "fontSize": 16,
                               "fontWeight": "normal"
                             },
                             {
                               "type": "text",
-                              "id": "jCuzu",
-                              "name": "User Text 2",
-                              "fill": "$text-primary",
-                              "textGrowth": "fixed-width",
-                              "width": "fill_container",
-                              "content": "Ahora en WoW, ¿qué healer es mejor para M+?",
-                              "fontFamily": "$font-sans",
-                              "fontSize": 14,
-                              "fontWeight": "normal"
+                              "id": "oXVtB",
+                              "name": "Agent 2 Name",
+                              "fill": "#e9c176",
+                              "content": "THE ARCHIVIST",
+                              "fontFamily": "MedievalSharp",
+                              "fontSize": 11,
+                              "letterSpacing": 0.08
                             }
                           ]
                         },
                         {
                           "type": "frame",
-                          "id": "tcukW",
-                          "name": "User Meta 2",
-                          "gap": 6,
-                          "justifyContent": "end",
+                          "id": "UnDbB",
+                          "name": "Agent 2 Bubble",
+                          "fill": "#231f1a80",
+                          "cornerRadius": 20,
+                          "stroke": "#ffffff14",
+                          "strokeWidth": 1,
+                          "effect": {
+                            "type": "background_blur",
+                            "radius": 12
+                          },
+                          "layout": "vertical",
+                          "gap": 16,
+                          "padding": [
+                            16,
+                            20
+                          ],
                           "children": [
                             {
+                              "type": "frame",
+                              "id": "X9XHN",
+                              "layoutPosition": "absolute",
+                              "x": 0,
+                              "y": 0,
+                              "name": "Agent 2 Accent",
+                              "opacity": 0.7,
+                              "width": 3,
+                              "height": 200,
+                              "fill": "#e9c176",
+                              "cornerRadius": 2
+                            },
+                            {
                               "type": "text",
-                              "id": "v9NXzv",
-                              "name": "User Time 2",
-                              "fill": "$text-muted",
-                              "content": "hace 5s · WoW",
-                              "fontFamily": "$font-sans",
-                              "fontSize": 11,
-                              "fontWeight": "normal"
+                              "id": "fYmFS",
+                              "name": "Agent 2 Text",
+                              "fill": "#e9e1d8",
+                              "textGrowth": "fixed-width",
+                              "width": 420,
+                              "content": "The voice chuckles, a sound like dry leaves scattering across stone. \"Tactical knowledge is fleeting. We deal in the currency of the soul. A memory of profound loss, or a secret never spoken.\"",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 14
+                            },
+                            {
+                              "type": "frame",
+                              "id": "EzOhw",
+                              "name": "Actions Section",
+                              "fill": "#231f1a99",
+                              "cornerRadius": 14,
+                              "stroke": "#ffffff0f",
+                              "strokeWidth": 1,
+                              "layout": "vertical",
+                              "gap": 8,
+                              "padding": 16,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "WgPP4",
+                                  "name": "Actions Label",
+                                  "fill": "#d1c5b4",
+                                  "content": "Suggested Actions:",
+                                  "fontFamily": "DM Sans",
+                                  "fontSize": 12,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "nEvjO",
+                                  "name": "Actions Row",
+                                  "gap": 8,
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "a67kY",
+                                      "name": "Offer a Secret",
+                                      "fill": "#e9c1761a",
+                                      "cornerRadius": 12,
+                                      "stroke": "#e9c17640",
+                                      "strokeWidth": 1,
+                                      "gap": 6,
+                                      "padding": [
+                                        10,
+                                        16
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "ejIKO",
+                                          "name": "Secret Icon",
+                                          "fill": "#e9c176",
+                                          "content": "🔑",
+                                          "fontFamily": "DM Sans",
+                                          "fontSize": 14,
+                                          "fontWeight": "normal"
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "GnT7x",
+                                          "name": "Secret Label",
+                                          "fill": "#e9c176",
+                                          "content": "Offer a secret",
+                                          "fontFamily": "DM Sans",
+                                          "fontSize": 13,
+                                          "fontWeight": "500"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "Y45Gjt",
+                                      "name": "Prepare for Combat",
+                                      "fill": "#ffffff0a",
+                                      "cornerRadius": 12,
+                                      "stroke": "#ffffff14",
+                                      "strokeWidth": 1,
+                                      "gap": 6,
+                                      "padding": [
+                                        10,
+                                        16
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "GTzy5",
+                                          "name": "Combat Icon",
+                                          "fill": "#d1c5b4",
+                                          "content": "⚔️",
+                                          "fontFamily": "DM Sans",
+                                          "fontSize": 14,
+                                          "fontWeight": "normal"
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "VuuAq",
+                                          "name": "Combat Label",
+                                          "fill": "#d1c5b4",
+                                          "content": "Prepare for combat",
+                                          "fontFamily": "DM Sans",
+                                          "fontSize": 13,
+                                          "fontWeight": "500"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "kNgdN",
+                                      "name": "Investigate Runes",
+                                      "fill": "#ffffff0a",
+                                      "cornerRadius": 12,
+                                      "stroke": "#ffffff14",
+                                      "strokeWidth": 1,
+                                      "gap": 6,
+                                      "padding": [
+                                        10,
+                                        16
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "lSRVN",
+                                          "name": "Runes Icon",
+                                          "fill": "#d1c5b4",
+                                          "content": "🔍",
+                                          "fontFamily": "DM Sans",
+                                          "fontSize": 14,
+                                          "fontWeight": "normal"
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "RQsfw",
+                                          "name": "Runes Label",
+                                          "fill": "#d1c5b4",
+                                          "content": "Investigate the runes",
+                                          "fontFamily": "DM Sans",
+                                          "fontSize": 13,
+                                          "fontWeight": "500"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
                             }
                           ]
                         }
@@ -878,314 +699,108 @@
                 },
                 {
                   "type": "frame",
-                  "id": "N995TI",
-                  "name": "Input Bar",
-                  "width": "fill_container",
-                  "stroke": "$border-subtle",
-                  "strokeWidth": {
-                    "top": 1
-                  },
-                  "gap": 8,
-                  "padding": [
-                    12,
-                    16
-                  ],
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "IABCx",
-                      "name": "Agent Dropdown",
-                      "fill": "$bg-input",
-                      "cornerRadius": "$radius-md",
-                      "gap": 6,
-                      "padding": [
-                        8,
-                        10
-                      ],
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "vJuVM",
-                          "name": "Dropdown Icon",
-                          "fill": "$accent-d3",
-                          "content": "🐉",
-                          "fontFamily": "$font-sans",
-                          "fontSize": 13,
-                          "fontWeight": "normal"
-                        },
-                        {
-                          "type": "text",
-                          "id": "g9UiT",
-                          "name": "Dropdown Label",
-                          "fill": "$text-primary",
-                          "content": "D3",
-                          "fontFamily": "$font-sans",
-                          "fontSize": 13,
-                          "fontWeight": "600"
-                        },
-                        {
-                          "type": "text",
-                          "id": "WHRet",
-                          "name": "Dropdown Arrow",
-                          "fill": "$text-muted",
-                          "content": "▼",
-                          "fontFamily": "$font-sans",
-                          "fontSize": 10,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "Ys9X1",
-                      "name": "Text Input Field",
-                      "width": "fill_container",
-                      "fill": "$bg-input",
-                      "cornerRadius": "$radius-md",
-                      "gap": 8,
-                      "padding": [
-                        10,
-                        12
-                      ],
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "K1AvTq",
-                          "name": "Input Placeholder",
-                          "fill": "$text-muted",
-                          "content": "Pregunta sobre D3 o WoW...",
-                          "fontFamily": "$font-sans",
-                          "fontSize": 14,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "FegN8",
-                      "name": "Send Button",
-                      "width": 36,
-                      "height": 36,
-                      "fill": "$accent-primary",
-                      "cornerRadius": 9999,
-                      "layout": "none",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "ceAEx",
-                          "x": 10,
-                          "y": 9,
-                          "name": "Send Icon",
-                          "fill": "#ffffff",
-                          "content": "➤",
-                          "fontFamily": "$font-sans",
-                          "fontSize": 14,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "gYNLA",
-                  "layoutPosition": "absolute",
-                  "x": 0,
-                  "y": 45,
-                  "name": "Dropdown Menu",
-                  "fill": "$bg-sidebar",
-                  "cornerRadius": "$radius-md",
-                  "stroke": "$border-subtle",
-                  "strokeWidth": 1,
-                  "layout": "vertical",
-                  "gap": 2,
-                  "padding": 4,
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "oWhE7",
-                      "name": "D3 Option",
-                      "cornerRadius": "$radius-sm",
-                      "gap": 8,
-                      "padding": [
-                        10,
-                        12
-                      ],
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "gUPUA",
-                          "name": "D3 Option Icon",
-                          "fill": "$accent-d3",
-                          "content": "🐉",
-                          "fontFamily": "$font-sans",
-                          "fontSize": 13,
-                          "fontWeight": "normal"
-                        },
-                        {
-                          "type": "text",
-                          "id": "k7Mji",
-                          "name": "D3 Option Text",
-                          "fill": "$text-primary",
-                          "content": "Diablo III",
-                          "fontFamily": "$font-sans",
-                          "fontSize": 14,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "XnUKq",
-                      "name": "WoW Option",
-                      "cornerRadius": "$radius-sm",
-                      "gap": 8,
-                      "padding": [
-                        10,
-                        12
-                      ],
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "POm5d",
-                          "name": "WoW Option Icon",
-                          "fill": "$accent-wow",
-                          "content": "🐻",
-                          "fontFamily": "$font-sans",
-                          "fontSize": 13,
-                          "fontWeight": "normal"
-                        },
-                        {
-                          "type": "text",
-                          "id": "drwst",
-                          "name": "WoW Option Text",
-                          "fill": "$text-primary",
-                          "content": "World of Warcraft",
-                          "fontFamily": "$font-sans",
-                          "fontSize": 14,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "P8bj6",
+                  "id": "ZTU9A",
                   "layoutPosition": "absolute",
                   "x": 20,
-                  "y": 180,
-                  "name": "Streaming Indicator",
-                  "width": 960,
-                  "height": 36,
-                  "fill": "$bg-bubble-assistant",
-                  "cornerRadius": "$radius-md",
-                  "gap": 8,
-                  "padding": [
-                    10,
-                    14
-                  ],
+                  "y": 660,
+                  "name": "Floating Input",
+                  "width": 640,
+                  "fill": "#16130eb3",
+                  "cornerRadius": 20,
+                  "stroke": "#ffffff14",
+                  "strokeWidth": 1,
+                  "effect": {
+                    "type": "background_blur",
+                    "radius": 16
+                  },
+                  "gap": 12,
+                  "padding": 6,
                   "alignItems": "center",
                   "children": [
                     {
                       "type": "frame",
-                      "id": "w4e6I",
-                      "name": "Streaming Dot",
-                      "width": 8,
-                      "height": 8,
-                      "fill": "$accent-wow",
-                      "cornerRadius": 9999,
-                      "layout": "none"
-                    },
-                    {
-                      "type": "text",
-                      "id": "e9dgt",
-                      "name": "Streaming Text",
-                      "fill": "$text-secondary",
-                      "content": "🐻 WoW está pensando...",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 13,
-                      "fontWeight": "normal"
+                      "id": "h5QTm",
+                      "name": "Add Button",
+                      "width": 40,
+                      "height": 40,
+                      "fill": "#ffffff0a",
+                      "cornerRadius": 20,
+                      "stroke": "#ffffff14",
+                      "strokeWidth": 1,
+                      "layout": "vertical",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Y31mMa",
+                          "name": "Plus Icon",
+                          "fill": "#d1c5b4",
+                          "content": "+",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 24,
+                          "fontWeight": "300"
+                        }
+                      ]
                     },
                     {
                       "type": "frame",
-                      "id": "j0bj2E",
-                      "name": "Streaming Spacer",
+                      "id": "kALo6",
+                      "name": "Text Input",
                       "width": "fill_container",
-                      "height": 1,
-                      "layout": "none"
+                      "height": 40,
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        4
+                      ],
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "PdhFx",
+                          "name": "Placeholder",
+                          "fill": "#d1c5b466",
+                          "content": "Describe your next action...",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 15
+                        }
+                      ]
                     },
                     {
-                      "type": "text",
-                      "id": "m27SEO",
-                      "name": "Streaming Model",
-                      "fill": "$text-muted",
-                      "content": "groq",
-                      "fontFamily": "$font-mono",
-                      "fontSize": 11,
-                      "fontWeight": "normal"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "PO1w8",
-                  "layoutPosition": "absolute",
-                  "x": 0,
-                  "y": 0,
-                  "name": "Empty State",
-                  "enabled": false,
-                  "width": 1000,
-                  "height": 688,
-                  "layout": "vertical",
-                  "gap": 16,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "kPG0c",
-                      "name": "Empty Title",
-                      "fill": "$text-primary",
-                      "content": "🐉🐻 D3 / WoW Agent",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 24,
-                      "fontWeight": "700"
-                    },
-                    {
-                      "type": "text",
-                      "id": "GK2QC",
-                      "name": "Empty Subtitle",
-                      "fill": "$text-secondary",
-                      "content": "Pregunta sobre builds, items, temporadas o mecánicas",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 14,
-                      "fontWeight": "normal"
-                    },
-                    {
-                      "type": "text",
-                      "id": "ZgHzl",
-                      "name": "Empty Hint 1",
-                      "fill": "$text-muted",
-                      "content": "• Builds de temporada  • Stats de items  • Mecánicas de boss",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 13,
-                      "fontWeight": "normal"
-                    },
-                    {
-                      "type": "text",
-                      "id": "QmBjX",
-                      "name": "Empty Hint 2",
-                      "fill": "$text-muted",
-                      "content": "• Paragon y optimización  • Mythic+  • Raids",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 13,
-                      "fontWeight": "normal"
+                      "type": "frame",
+                      "id": "Y5CNzq",
+                      "name": "Send Button",
+                      "width": 40,
+                      "height": 40,
+                      "cornerRadius": 20,
+                      "stroke": "#ffffff33",
+                      "strokeWidth": 1,
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#e9c17659",
+                        "offset": {
+                          "x": 0,
+                          "y": 2
+                        },
+                        "blur": 12
+                      },
+                      "layout": "vertical",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "fC6mx",
+                          "name": "Arrow",
+                          "fill": "#1a1200",
+                          "content": "↑",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 18,
+                          "fontWeight": "700"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -1204,428 +819,259 @@
       "clip": true,
       "width": 1280,
       "height": 800,
-      "fill": "$bg-app",
+      "fill": "#16130e",
+      "layout": "vertical",
+      "justifyContent": "center",
+      "alignItems": "center",
       "children": [
         {
           "type": "frame",
-          "id": "r1ZHt",
-          "name": "Left Decorative Panel",
-          "width": 480,
-          "height": "fill_container",
-          "fill": "$bg-sidebar",
-          "layout": "vertical",
-          "gap": 24,
-          "padding": 48,
-          "justifyContent": "center",
-          "alignItems": "center",
-          "children": [
-            {
-              "type": "frame",
-              "id": "d5g2S",
-              "name": "Decorative Logo Area",
-              "layout": "vertical",
-              "gap": 16,
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "ellipse",
-                  "id": "r1b5E",
-                  "layoutPosition": "absolute",
-                  "x": -19,
-                  "y": -24,
-                  "name": "Icon Glow",
-                  "fill": {
-                    "type": "gradient",
-                    "gradientType": "radial",
-                    "enabled": true,
-                    "rotation": 0,
-                    "size": {
-                      "width": 1,
-                      "height": 1
-                    },
-                    "colors": [
-                      {
-                        "color": "#00cc66",
-                        "position": 0
-                      },
-                      {
-                        "color": "#00cc6600",
-                        "position": 1
-                      }
-                    ]
-                  },
-                  "width": 120,
-                  "height": 120
-                },
-                {
-                  "type": "text",
-                  "id": "G8ego0",
-                  "name": "Game Icons",
-                  "fill": "$text-primary",
-                  "content": "🐉🐻",
-                  "fontFamily": "Inter",
-                  "fontSize": 64,
-                  "fontWeight": "normal"
-                },
-                {
-                  "type": "text",
-                  "id": "LH45h",
-                  "name": "Left App Name",
-                  "fill": "$text-primary",
-                  "content": "D3 / WoW Agent",
-                  "fontFamily": "$font-sans",
-                  "fontSize": 28,
-                  "fontWeight": "700"
-                },
-                {
-                  "type": "text",
-                  "id": "oftPL",
-                  "name": "Left Tagline",
-                  "fill": "$text-secondary",
-                  "textGrowth": "fixed-width",
-                  "width": 320,
-                  "content": "Asistente inteligente para Diablo III y World of Warcraft",
-                  "textAlign": "center",
-                  "fontFamily": "$font-sans",
-                  "fontSize": 15,
-                  "fontWeight": "normal"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "ajJMv",
-              "name": "Decorative Divider",
-              "width": 120,
-              "height": 2,
-              "fill": "$accent-primary"
-            },
-            {
-              "type": "frame",
-              "id": "cidbd",
-              "name": "Features List",
-              "layout": "vertical",
-              "gap": 16,
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "ifMmm",
-                  "name": "Feature 1",
-                  "width": 320,
-                  "gap": 12,
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "v9nT7",
-                      "name": "F1 Icon",
-                      "fill": "$accent-d3",
-                      "content": "⚔️",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 18,
-                      "fontWeight": "normal"
-                    },
-                    {
-                      "type": "text",
-                      "id": "i0X4a",
-                      "name": "F1 Text",
-                      "fill": "$text-secondary",
-                      "content": "Builds y temporadas actualizadas",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 14,
-                      "fontWeight": "normal"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "pCCst",
-                  "name": "Feature 2",
-                  "width": 320,
-                  "gap": 12,
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "bnBzj",
-                      "name": "F2 Icon",
-                      "fill": "$accent-wow",
-                      "content": "🛡️",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 18,
-                      "fontWeight": "normal"
-                    },
-                    {
-                      "type": "text",
-                      "id": "r8mQLm",
-                      "name": "F2 Text",
-                      "fill": "$text-secondary",
-                      "content": "Mythic+ y raid recommendations",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 14,
-                      "fontWeight": "normal"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "jfbym",
-                  "name": "Feature 3",
-                  "width": 320,
-                  "gap": 12,
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "JHQTE",
-                      "name": "F3 Icon",
-                      "fill": "$accent-primary",
-                      "content": "📊",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 18,
-                      "fontWeight": "normal"
-                    },
-                    {
-                      "type": "text",
-                      "id": "LABeu",
-                      "name": "F3 Text",
-                      "fill": "$text-secondary",
-                      "content": "Análisis de items y paragon",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 14,
-                      "fontWeight": "normal"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "uSyq4",
-          "name": "Right Login Panel",
+          "id": "qaLrM",
+          "name": "Login Content",
           "width": "fill_container",
           "height": "fill_container",
           "layout": "vertical",
-          "padding": 80,
           "justifyContent": "center",
           "alignItems": "center",
           "children": [
             {
               "type": "frame",
-              "id": "e8CTb",
-              "name": "Login Card",
-              "width": 380,
+              "id": "kNubs",
+              "name": "Logo Area",
               "layout": "vertical",
-              "gap": 24,
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Y7H5c",
+                  "name": "App Title",
+                  "fill": "#e9c176",
+                  "content": "D3 / WoW Specialist",
+                  "fontFamily": "MedievalSharp",
+                  "fontSize": 36,
+                  "letterSpacing": -0.04
+                },
+                {
+                  "type": "text",
+                  "id": "BsXit",
+                  "name": "App Subtitle",
+                  "fill": "#d1c5b4",
+                  "content": "Your AI companion for Diablo III & World of Warcraft",
+                  "fontFamily": "MedievalSharp",
+                  "fontSize": 14
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "umOoX",
+              "name": "Glass Card",
+              "width": 400,
+              "height": 400,
+              "fill": "#231f1a99",
+              "cornerRadius": 24,
+              "stroke": "#ffffff26",
+              "strokeWidth": 1.5,
+              "effect": {
+                "type": "background_blur",
+                "radius": 16
+              },
+              "layout": "none",
               "children": [
                 {
                   "type": "frame",
-                  "id": "EnmX0",
-                  "name": "Card Header",
-                  "layout": "vertical",
-                  "gap": 8,
-                  "alignItems": "center",
+                  "id": "SzATq",
+                  "layoutPosition": "absolute",
+                  "x": 0,
+                  "y": 0,
+                  "name": "Gold Top Border",
+                  "width": 400,
+                  "height": 1
+                },
+                {
+                  "type": "frame",
+                  "id": "VXZPW",
+                  "x": 152,
+                  "y": 40,
+                  "name": "Icon Circle",
+                  "width": 96,
+                  "height": 96,
+                  "fill": "#231f1acc",
+                  "cornerRadius": 48,
+                  "stroke": "#e9c1764d",
+                  "strokeWidth": 1.5,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "KYYxY",
+                      "x": 8,
+                      "y": 8,
+                      "name": "Icon Glow",
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "radial",
+                        "enabled": true,
+                        "rotation": 0,
+                        "size": {
+                          "width": 1,
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "#e9c17626",
+                            "position": 0
+                          },
+                          {
+                            "color": "#e9c17600",
+                            "position": 1
+                          }
+                        ]
+                      },
+                      "width": 80,
+                      "height": 80
+                    },
+                    {
+                      "type": "text",
+                      "id": "lKlOU",
+                      "x": 17,
+                      "y": 20,
+                      "name": "Shield Icon",
+                      "fill": "#e9c176",
+                      "content": "🛡️",
+                      "fontFamily": "Geist",
+                      "fontSize": 48,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "xO5We",
+                  "x": 103,
+                  "y": 160,
+                  "name": "Card Title",
+                  "fill": "#e9e1d8",
+                  "content": "Enter the Realm",
+                  "fontFamily": "MedievalSharp",
+                  "fontSize": 22,
+                  "letterSpacing": -0.01
+                },
+                {
+                  "type": "text",
+                  "id": "JVeIS",
+                  "x": 40,
+                  "y": 200,
+                  "name": "Card Description",
+                  "fill": "#d1c5b4",
+                  "textGrowth": "fixed-width",
+                  "width": 320,
+                  "content": "Connect your mortal tether to proceed.",
+                  "textAlign": "center",
+                  "fontFamily": "Geist",
+                  "fontSize": 16
+                },
+                {
+                  "type": "frame",
+                  "id": "hQqxV",
+                  "x": 40,
+                  "y": 240,
+                  "name": "Discord Button",
+                  "width": 340,
+                  "height": 60,
+                  "fill": "#1a1510",
+                  "cornerRadius": 16,
+                  "stroke": "#e9c176",
+                  "strokeWidth": 1.5,
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#e9c17640",
+                    "offset": {
+                      "x": 0,
+                      "y": 4
+                    },
+                    "blur": 16
+                  },
+                  "layout": "none",
                   "children": [
                     {
                       "type": "text",
-                      "id": "vdrwi",
-                      "name": "Card Logo",
-                      "fill": "$text-primary",
-                      "content": "🐉🐻",
-                      "fontFamily": "Inter",
-                      "fontSize": 32,
+                      "id": "RYHmw",
+                      "x": 70,
+                      "y": 17,
+                      "name": "Discord Icon",
+                      "fill": "#e9c176",
+                      "content": "🔗",
+                      "fontFamily": "Geist",
+                      "fontSize": 28,
                       "fontWeight": "normal"
                     },
                     {
                       "type": "text",
-                      "id": "Fy8CM",
-                      "name": "Card Title",
-                      "fill": "$text-primary",
-                      "content": "Iniciar sesión",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 24,
-                      "fontWeight": "700"
-                    },
-                    {
-                      "type": "text",
-                      "id": "N1XaZ",
-                      "name": "Card Subtitle",
-                      "fill": "$text-secondary",
-                      "content": "Ingresa tus credenciales para acceder",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 14,
-                      "fontWeight": "normal"
+                      "id": "dp2Tf",
+                      "x": 105,
+                      "y": 19,
+                      "name": "Discord Label",
+                      "fill": "#e9c176",
+                      "content": "Continue with Discord",
+                      "fontFamily": "Geist",
+                      "fontSize": 18,
+                      "fontWeight": "700",
+                      "letterSpacing": 0.03
                     }
                   ]
                 },
                 {
                   "type": "frame",
-                  "id": "U3nn6",
-                  "name": "Form Divider",
-                  "width": "fill_container",
-                  "height": 1,
-                  "fill": "$border-subtle"
-                },
-                {
-                  "type": "frame",
-                  "id": "F5zseg",
-                  "name": "Username Group",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "gap": 6,
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "o2n49Q",
-                      "name": "Username Label",
-                      "fill": "$text-secondary",
-                      "content": "Usuario",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 13,
-                      "fontWeight": "600"
-                    },
-                    {
-                      "type": "frame",
-                      "id": "wyS4p",
-                      "name": "Username Input",
-                      "width": "fill_container",
-                      "height": 44,
-                      "fill": "$bg-input",
-                      "cornerRadius": "$radius-md",
-                      "stroke": "$border-subtle",
-                      "strokeWidth": 1,
-                      "layout": "vertical",
-                      "padding": [
-                        0,
-                        14
-                      ],
-                      "justifyContent": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "fJTso",
-                          "name": "Username Placeholder",
-                          "fill": "$text-muted",
-                          "content": "tu_usuario",
-                          "fontFamily": "$font-sans",
-                          "fontSize": 14,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "jChdL",
-                  "name": "Password Group",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "gap": 6,
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "nI5tt",
-                      "name": "Password Label",
-                      "fill": "$text-secondary",
-                      "content": "Contraseña",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 13,
-                      "fontWeight": "600"
-                    },
-                    {
-                      "type": "frame",
-                      "id": "opDQQ",
-                      "name": "Password Input",
-                      "width": "fill_container",
-                      "height": 44,
-                      "fill": "$bg-input",
-                      "cornerRadius": "$radius-md",
-                      "stroke": "$border-subtle",
-                      "strokeWidth": 1,
-                      "layout": "vertical",
-                      "padding": [
-                        0,
-                        14
-                      ],
-                      "justifyContent": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "E7GNy",
-                          "name": "Password Placeholder",
-                          "fill": "$text-muted",
-                          "content": "••••••••",
-                          "fontFamily": "$font-sans",
-                          "fontSize": 14,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "SsGw1",
-                  "name": "Login Button",
-                  "width": "fill_container",
-                  "height": 44,
-                  "fill": "$accent-primary",
-                  "cornerRadius": "$radius-md",
-                  "stroke": "#00000000",
-                  "layout": "vertical",
-                  "justifyContent": "center",
+                  "id": "m6YVs",
+                  "x": 40,
+                  "y": 320,
+                  "name": "Divider",
+                  "width": 320,
+                  "height": 20,
+                  "gap": 12,
                   "alignItems": "center",
                   "children": [
                     {
-                      "type": "text",
-                      "id": "mofJ3",
-                      "name": "Login Button Text",
-                      "fill": "#ffffff",
-                      "content": "Ingresar",
-                      "fontFamily": "$font-sans",
-                      "fontSize": 15,
-                      "fontWeight": "600"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "Q6W0Jy",
-                  "name": "Login Footer",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "gap": 8,
-                  "alignItems": "center",
-                  "children": [
+                      "type": "frame",
+                      "id": "C7VuU",
+                      "name": "Divider Left",
+                      "width": "fill_container",
+                      "height": 1
+                    },
                     {
                       "type": "text",
-                      "id": "sSu7l",
-                      "name": "Footer Hint",
-                      "fill": "$text-muted",
-                      "textGrowth": "fixed-width",
-                      "width": "fill_container",
-                      "content": "Credenciales proporcionadas por el administrador",
-                      "textAlign": "center",
-                      "fontFamily": "$font-sans",
+                      "id": "T42AP",
+                      "name": "Divider Icon",
+                      "fill": "#4e463980",
+                      "content": "⬡",
+                      "fontFamily": "Geist",
                       "fontSize": 12,
                       "fontWeight": "normal"
                     },
                     {
-                      "type": "text",
-                      "id": "hPRhL",
-                      "name": "Version Text",
-                      "fill": "$text-muted",
-                      "content": "v1.0.0 · D3 / WoW Agent",
-                      "fontFamily": "$font-mono",
-                      "fontSize": 11,
-                      "fontWeight": "normal"
+                      "type": "frame",
+                      "id": "tnrtK",
+                      "name": "Divider Right",
+                      "width": "fill_container",
+                      "height": 1
                     }
                   ]
                 }
               ]
+            },
+            {
+              "type": "text",
+              "id": "A8oEel",
+              "name": "Footer Text",
+              "fill": "#d1c5b480",
+              "content": "By entering, you bind your soul to the Ethereal Pact.",
+              "fontFamily": "MedievalSharp",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": 0.05
             }
           ]
         }
@@ -1736,6 +1182,130 @@
     "accent-wow-bg": {
       "type": "color",
       "value": "#00ff8820"
+    },
+    "se-bg": {
+      "type": "color",
+      "value": "#16130e"
+    },
+    "se-surface": {
+      "type": "color",
+      "value": "#16130e"
+    },
+    "se-surface-dim": {
+      "type": "color",
+      "value": "#16130e"
+    },
+    "se-surface-bright": {
+      "type": "color",
+      "value": "#3d3933"
+    },
+    "se-surface-container-low": {
+      "type": "color",
+      "value": "#1e1b16"
+    },
+    "se-surface-container": {
+      "type": "color",
+      "value": "#231f1a"
+    },
+    "se-surface-container-high": {
+      "type": "color",
+      "value": "#2d2924"
+    },
+    "se-surface-container-highest": {
+      "type": "color",
+      "value": "#38342e"
+    },
+    "se-on-surface": {
+      "type": "color",
+      "value": "#e9e1d8"
+    },
+    "se-on-surface-variant": {
+      "type": "color",
+      "value": "#d1c5b4"
+    },
+    "se-primary": {
+      "type": "color",
+      "value": "#e9c176"
+    },
+    "se-on-primary": {
+      "type": "color",
+      "value": "#412d00"
+    },
+    "se-primary-container": {
+      "type": "color",
+      "value": "#c5a059"
+    },
+    "se-outline": {
+      "type": "color",
+      "value": "#9a8f80"
+    },
+    "se-outline-variant": {
+      "type": "color",
+      "value": "#4e4639"
+    },
+    "se-error": {
+      "type": "color",
+      "value": "#ffb4ab"
+    },
+    "se-tertiary": {
+      "type": "color",
+      "value": "#adc6ff"
+    },
+    "se-tertiary-container": {
+      "type": "color",
+      "value": "#76a4ff"
+    },
+    "se-white-10": {
+      "type": "color",
+      "value": "rgba(255,255,255,0.1)"
+    },
+    "se-white-5": {
+      "type": "color",
+      "value": "rgba(255,255,255,0.05)"
+    },
+    "se-font-display": {
+      "type": "string",
+      "value": "Epilogue"
+    },
+    "se-font-body": {
+      "type": "string",
+      "value": "Geist"
+    },
+    "se-radius-sm": {
+      "type": "number",
+      "value": 4
+    },
+    "se-radius-md": {
+      "type": "number",
+      "value": 8
+    },
+    "se-radius-lg": {
+      "type": "number",
+      "value": 16
+    },
+    "se-radius-xl": {
+      "type": "number",
+      "value": 24
+    },
+    "se-space-xs": {
+      "type": "number",
+      "value": 4
+    },
+    "se-space-sm": {
+      "type": "number",
+      "value": 8
+    },
+    "se-space-md": {
+      "type": "number",
+      "value": 16
+    },
+    "se-space-lg": {
+      "type": "number",
+      "value": 24
+    },
+    "se-space-xl": {
+      "type": "number",
+      "value": 40
     }
   },
   "fileToken": "4f03b17b-4840-4e9c-8b8a-f21f669a6fc2"
