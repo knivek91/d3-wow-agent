@@ -45,7 +45,7 @@ export default function ConversationItem({
         type="button"
         onClick={(e) => { e.stopPropagation(); onDelete() }}
         className="hidden group-hover:flex group-focus-within:flex flex-shrink-0 w-6 h-6 rounded items-center justify-center text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors"
-        title="Eliminar conversación"
+        title="Delete conversation"
       >
         <Trash2 className="w-3.5 h-3.5" />
       </button>

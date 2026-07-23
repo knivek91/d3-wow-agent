@@ -40,7 +40,7 @@ export default function ErrorMessage({
             )}
             {!recoverable && (
               <Button variant="secondary" size="sm" asChild>
-                <a href="/chat">Nueva conversación</a>
+                <a href="/chat">New conversation</a>
               </Button>
             )}
           </div>
