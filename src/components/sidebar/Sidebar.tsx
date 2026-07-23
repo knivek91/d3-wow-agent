@@ -4,7 +4,8 @@ import ConversationItem from './ConversationItem'
 import { Button } from '#/components/ui/button.tsx'
 import { Input } from '#/components/ui/input.tsx'
 import { Separator } from '#/components/ui/separator.tsx'
-import { Plus } from 'lucide-react'
+import { authClient } from '#/lib/auth-client.js'
+import { Plus, LogOut } from 'lucide-react'
 import { type AgentType, AGENT_OPTIONS } from '#/types/agent.ts'
 import type { Conversation } from '#/lib/api.ts'
 
@@ -40,9 +41,9 @@ function groupKey(dateStr: string): GroupKey {
 }
 
 const groupLabels: Record<GroupKey, string> = {
-  today: 'Hoy',
-  yesterday: 'Ayer',
-  older: 'Anterior',
+  today: 'Today',
+  yesterday: 'Yesterday',
+  older: 'Older',
 }
 
 export default function Sidebar({
@@ -84,7 +85,7 @@ export default function Sidebar({
           size="icon"
           onClick={onNewChat}
           className="text-primary"
-          title="Nueva conversación"
+          title="New conversation"
         >
           <Plus className="w-4 h-4" />
         </Button>
@@ -105,6 +106,15 @@ export default function Sidebar({
             </Button>
           ))}
         </div>
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => authClient.signOut({ callbackURL: '/auth/login' })}
+          className="text-muted-foreground hover:text-destructive mt-auto"
+          title="Sign out"
+        >
+          <LogOut className="w-4 h-4" />
+        </Button>
       </div>
 
       {/* ── Expanded sidebar: hidden on mobile, shown on desktop ── */}
@@ -121,7 +131,7 @@ export default function Sidebar({
             size="icon"
             onClick={onToggleCollapse}
             className="text-muted-foreground"
-            title="Colapsar sidebar"
+            title="Collapse sidebar"
           >
             ◀
           </Button>
@@ -132,7 +142,7 @@ export default function Sidebar({
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Buscar conversaciones..."
+            placeholder="Search conversations..."
             className="w-full text-xs"
           />
         </div>
@@ -143,7 +153,7 @@ export default function Sidebar({
           className="flex items-center gap-2 mx-3 mt-3 px-3 py-2 justify-start text-primary"
         >
           <span>✨</span>
-          <span>Nueva conversación...</span>
+          <span>New conversation...</span>
         </Button>
 
         <Separator className="mx-3 my-2" />
@@ -182,7 +192,17 @@ export default function Sidebar({
             className="flex items-center justify-center gap-2 w-full"
           >
             <Plus className="w-4 h-4" />
-            Nueva conversación
+            New conversation
+          </Button>
+        </div>
+        <div className="px-3 pb-3 border-t border-border">
+          <Button
+            variant="ghost"
+            onClick={() => authClient.signOut({ callbackURL: '/auth/login' })}
+            className="flex items-center justify-center gap-2 w-full text-muted-foreground text-xs hover:text-destructive"
+          >
+            <LogOut className="w-3.5 h-3.5" />
+            Sign out
           </Button>
         </div>
       </div>
@@ -194,7 +214,7 @@ export default function Sidebar({
             variant="ghost"
             size="icon"
             onClick={onToggleCollapse}
-            title="Expandir sidebar"
+            title="Expand sidebar"
           >
             ▶
           </Button>
@@ -220,9 +240,18 @@ export default function Sidebar({
             size="icon"
             onClick={onNewChat}
             className="text-primary"
-            title="Nueva conversación"
+            title="New conversation"
           >
             <Plus className="w-4 h-4" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => authClient.signOut({ callbackURL: '/auth/login' })}
+            className="text-muted-foreground hover:text-destructive mt-auto"
+            title="Sign out"
+          >
+            <LogOut className="w-4 h-4" />
           </Button>
         </div>
       )}

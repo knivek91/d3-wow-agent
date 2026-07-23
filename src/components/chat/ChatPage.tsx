@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
+import { useNavigate } from '@tanstack/react-router'
 import Sidebar from '../sidebar/Sidebar'
 import MessageList from './MessageList'
 import ChatInput from './ChatInput'
@@ -14,6 +15,7 @@ import {
   type Message,
 } from '../../lib/api'
 import type { AgentType } from '#/types/agent.ts'
+import { useSession } from '#/lib/auth-client.js'
 
 interface ChatState {
   conversations: Conversation[]
@@ -38,8 +40,16 @@ const initialState: ChatState = {
 }
 
 export default function ChatPage() {
+  const navigate = useNavigate()
+  const { data: session, isPending: sessionLoading } = useSession()
   const [state, setState] = useState<ChatState>(initialState)
   const currentAgent = useRef<AgentType>('d3')
+
+  useEffect(() => {
+    if (!sessionLoading && !session) {
+      navigate({ to: '/auth/login' })
+    }
+  }, [session, sessionLoading, navigate])
 
   const update = useCallback((patch: Partial<ChatState>) => {
     setState((prev) => ({ ...prev, ...patch }))
