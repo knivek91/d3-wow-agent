@@ -20,7 +20,7 @@ export function createAuth(env: Env) {
       },
     },
     session: {
-      cookieCache: { enabled: true, maxAge: 5 * 60 },
+      cookieCache: { enabled: true, maxAge: 60 * 60 },
     },
   })
 }
