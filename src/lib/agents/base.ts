@@ -3,12 +3,13 @@ import { WOW_SYSTEM_PROMPT } from "./wow-specialist";
 import { callWithFallback } from "../llm/fallback";
 import type { Logger } from "../observability/logger";
 import type { AgentType } from "#/types/agent.ts";
+import type { MessageRole, ChatMessage } from "#/types/message.ts";
 
 export type { AgentType } from "#/types/agent.ts";
 
 export interface AgentMessage {
-  role: "user" | "assistant" | "system";
-  content: string;
+  role: MessageRole
+  content: string
 }
 
 export function buildSystemPrompt(agentType: AgentType): string {
@@ -18,6 +19,7 @@ export function buildSystemPrompt(agentType: AgentType): string {
 export async function runAgent(
   messages: AgentMessage[],
   agentType: AgentType,
+  groqApiKey: string,
   tools?: unknown[],
   logger?: Logger,
 ): Promise<string> {
@@ -27,5 +29,5 @@ export async function runAgent(
     ...messages,
   ];
 
-  return callWithFallback(fullMessages, logger);
+  return callWithFallback(fullMessages, groqApiKey, logger);
 }
