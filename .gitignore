@@ -17,7 +17,7 @@ todos.json
 !.env.example
 
 # Tool-specific config
-# .opencode/
+opencode.json
 
 # Test coverage
 coverage/

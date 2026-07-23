@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sanctuary Eternal - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@600;700;800&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#690005",
+                        "on-surface": "#e9e1d8",
+                        "on-secondary": "#313030",
+                        "on-primary-fixed-variant": "#5d4201",
+                        "on-tertiary": "#002e6a",
+                        "outline": "#9a8f80",
+                        "primary-container": "#c5a059",
+                        "on-primary": "#412d00",
+                        "on-secondary-container": "#bab8b7",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-surface-variant": "#d1c5b4",
+                        "surface-variant": "#38342e",
+                        "surface-dim": "#16130e",
+                        "on-tertiary-fixed": "#001a42",
+                        "primary-fixed-dim": "#e9c176",
+                        "background": "#16130e",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "surface-container-low": "#1e1b16",
+                        "inverse-primary": "#775a19",
+                        "surface-bright": "#3d3933",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#474646",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "surface": "#16130e",
+                        "error-container": "#93000a",
+                        "secondary-container": "#4a4949",
+                        "surface-tint": "#e9c176",
+                        "on-tertiary-container": "#00387e",
+                        "surface-container": "#231f1a",
+                        "primary-fixed": "#ffdea5",
+                        "on-primary-fixed": "#261900",
+                        "secondary-fixed-dim": "#c9c6c5",
+                        "inverse-surface": "#e9e1d8",
+                        "secondary": "#c9c6c5",
+                        "outline-variant": "#4e4639",
+                        "tertiary-container": "#76a4ff",
+                        "on-primary-container": "#4e3700",
+                        "primary": "#e9c176",
+                        "tertiary-fixed": "#d8e2ff",
+                        "surface-container-lowest": "#110e09",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "surface-container-high": "#2d2924",
+                        "inverse-on-surface": "#34302a",
+                        "error": "#ffb4ab",
+                        "on-background": "#e9e1d8",
+                        "tertiary": "#adc6ff",
+                        "surface-container-highest": "#38342e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "40px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "unit": "4px",
+                        "margin-desktop": "48px",
+                        "md": "16px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "2xl": "64px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Epilogue"],
+                        "headline-md": ["Epilogue"],
+                        "headline-lg-mobile": ["Epilogue"],
+                        "label-md": ["Geist"],
+                        "body-md": ["Geist"],
+                        "body-lg": ["Geist"],
+                        "headline-lg": ["Epilogue"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(22, 19, 14, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .gold-glow {
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.2);
+        }
+        
+        .gold-glow:hover {
+            box-shadow: 0 0 30px rgba(197, 160, 89, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex items-center justify-center relative overflow-hidden font-body-md">
+<!-- Cinematic Background -->
+<div class="absolute inset-0 z-0">
+<div class="bg-cover bg-center w-full h-full opacity-60" data-alt="A breathtaking, cinematic dark fantasy landscape viewed from a high vantage point. A colossal, ancient gothic citadel rises from misty, rugged mountains, its spires piercing an ominous, stormy sky. Subtle, ethereal gold light bleeds from deep within the fortress windows, casting a mysterious, powerful ambient glow over the scene. The overall color palette is dominated by deep charcoal grays, obsidian blacks, and desaturated blues, starkly contrasted by the vibrant, ethereal golden illumination. The mood is one of powerful mystery and ancient grandeur, perfectly capturing a high-end, modern 'Neo-Ethereal' gaming aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAQ6zVhetki3_hyCr7R0FcfKsQbHYBiVrGHxcBRr5g1AwPdOLsw_I5mAAx9PMIuRQR9rS4547lu9iOwDlyl8lLlqaqfVyf_KgBZF4enXfBuQ5Hsf1tbss2aig3ZNPDxiqnTXNq29Ttu4a70tvA6agPuyALLFrawAOHQ0hpajkct4jWoZUYPW1qo7NAmq7mCXvAhScQo8XspZjr8wcynHVETp6cV2gbPjtPVsqJtQHd1GpSIbVOk7IP5')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
+</div>
+<!-- Login Container -->
+<main class="relative z-10 w-full max-w-md px-margin-mobile md:px-0">
+<!-- Logo Area -->
+<div class="text-center mb-10">
+<h1 class="font-display-lg text-display-lg text-primary mb-2 tracking-tight">Sanctuary Eternal</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Awaken Your Legacy</p>
+</div>
+<!-- Glassmorphic Card -->
+<div class="glass-panel rounded-xl p-xl flex flex-col gap-lg items-center relative overflow-hidden">
+<!-- Subtle internal glow top border effect -->
+<div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+<div class="w-20 h-20 rounded-full bg-surface-container flex items-center justify-center border border-white/10 mb-sm gold-glow">
+<span class="material-symbols-outlined text-[40px] text-primary" style="font-variation-settings: 'FILL' 1;">
+                    shield_moon
+                </span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface text-center">Enter the Realm</h2>
+<p class="font-body-md text-body-md text-on-surface-variant text-center mb-md">Connect your mortal tether to proceed.</p>
+<!-- Primary Action -->
+<button class="w-full bg-gradient-to-r from-primary-container to-primary text-on-primary font-label-md text-label-md py-4 px-lg rounded-lg flex items-center justify-center gap-sm transition-all duration-300 ease-out hover:scale-[1.02] active:scale-95 gold-glow relative overflow-hidden group">
+<div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined">swap_horizontal_circle</span>
+                Continue with Discord
+            </button>
+<!-- Decorative Divider -->
+<div class="w-full flex items-center gap-sm opacity-50 my-sm">
+<div class="h-[1px] flex-1 bg-gradient-to-r from-transparent to-outline-variant"></div>
+<span class="material-symbols-outlined text-outline-variant text-sm">change_history</span>
+<div class="h-[1px] flex-1 bg-gradient-to-l from-transparent to-outline-variant"></div>
+</div>
+<!-- Secondary Actions -->
+<div class="flex flex-col sm:flex-row justify-between w-full gap-md mt-sm">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-xs justify-center group" href="#">
+<span class="material-symbols-outlined text-[18px] group-hover:text-primary transition-colors">auto_stories</span>
+                    Compendium
+                </a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-error transition-colors flex items-center gap-xs justify-center group" href="#">
+<span class="material-symbols-outlined text-[18px] group-hover:text-error transition-colors">logout</span>
+                    Leave Realm
+                </a>
+</div>
+</div>
+<!-- Footer Note -->
+<p class="text-center font-label-md text-[12px] text-on-surface-variant/50 mt-xl">
+            By entering, you bind your soul to the Ethereal Pact.
+        </p>
+</main>
+</body></html>
