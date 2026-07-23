@@ -10,6 +10,8 @@ import { createLogger } from '../lib/observability/logger'
 import { buildContext } from '../lib/agents/context'
 import { createSharedTools } from '../lib/tools/index'
 import { createAuth } from '../lib/auth'
+import { withErrorHandling } from '#/types/api.ts'
+import type { MessageRole } from '#/types/message.ts'
 
 function getDb() {
   return createDb(env as { d3_wow_db: import('drizzle-orm/d1').DrizzleD1Database })
@@ -23,20 +25,15 @@ async function getSession() {
 
 export const listConversationsFn = createServerFn({ method: 'GET' })
   .handler(async () => {
-    try {
+    return withErrorHandling(async () => {
       const session = await getSession()
-      if (!session) return { data: [], error: 'Unauthorized' }
-
+      if (!session) return []
       const db = getDb()
-      const all = await db.query.conversations.findMany({
+      return db.query.conversations.findMany({
         where: eq(conversations.userId, session.user.id),
         orderBy: [desc(conversations.updatedAt)],
       })
-      return { data: all as any[], error: null }
-    } catch (e) {
-      console.error('[listConversationsFn error]', e)
-      return { data: [], error: 'Failed to list conversations' }
-    }
+    }, [], 'listConversationsFn')
   })
 
 export const createConversationFn = createServerFn({ method: 'POST' })
@@ -47,10 +44,9 @@ export const createConversationFn = createServerFn({ method: 'POST' })
     })
   )
   .handler(async ({ data }) => {
-    try {
+    return withErrorHandling(async () => {
       const session = await getSession()
-      if (!session) return { data: null, error: 'Unauthorized' }
-
+      if (!session) return null
       const db = getDb()
       const id = crypto.randomUUID()
       await db.insert(conversations).values({
@@ -59,69 +55,53 @@ export const createConversationFn = createServerFn({ method: 'POST' })
         agentType: data.agentType,
         userId: session.user.id,
       })
-      const conv = await db.query.conversations.findFirst({
+      return db.query.conversations.findFirst({
         where: eq(conversations.id, id),
       })
-      return { data: conv as any, error: null }
-    } catch (e) {
-      const msg = e instanceof Error ? e.message : 'Unknown error'
-      console.error('[createConversationFn error]', msg)
-      return { data: null, error: msg }
-    }
+    }, null, 'createConversationFn')
   })
 
 export const deleteConversationFn = createServerFn({ method: 'POST' })
   .validator(z.object({ id: z.string() }))
   .handler(async ({ data }) => {
-    try {
+    return withErrorHandling(async () => {
       const session = await getSession()
-      if (!session) return { data: false, error: 'Unauthorized' }
-
+      if (!session) return false
       const db = getDb()
       const conv = await db.query.conversations.findFirst({
         where: eq(conversations.id, data.id),
       })
-      if (!conv) return { data: false, error: 'Conversation not found' }
-      if (conv.userId !== session.user.id) return { data: false, error: 'Forbidden' }
-
-      await db.delete(conversations).where(
-        eq(conversations.id, data.id),
-      )
-      return { data: true, error: null }
-    } catch (e) {
-      return { data: false, error: 'Failed to delete conversation' }
-    }
+      if (!conv) return false
+      if (conv.userId !== session.user.id) return false
+      await db.delete(conversations).where(eq(conversations.id, data.id))
+      return true
+    }, false, 'deleteConversationFn')
   })
 
 export const listMessagesFn = createServerFn({ method: 'GET' })
   .validator(z.object({ conversationId: z.string() }))
   .handler(async ({ data }) => {
-    try {
+    return withErrorHandling(async () => {
       const session = await getSession()
-      if (!session) return { data: [], error: 'Unauthorized' }
-
+      if (!session) return []
       const db = getDb()
       const conv = await db.query.conversations.findFirst({
         where: eq(conversations.id, data.conversationId),
       })
-      if (!conv) return { data: [], error: 'Conversation not found' }
-      if (conv.userId !== session.user.id) return { data: [], error: 'Forbidden' }
-
-      const msgs = await db.query.messages.findMany({
+      if (!conv) return []
+      if (conv.userId !== session.user.id) return []
+      return db.query.messages.findMany({
         where: eq(messages.conversationId, data.conversationId),
         orderBy: [messages.createdAt],
       })
-      return { data: msgs as any[], error: null }
-    } catch (e) {
-      return { data: [], error: 'Failed to list messages' }
-    }
+    }, [], 'listMessagesFn')
   })
 
 export const sendMessageFn = createServerFn({ method: 'POST' })
   .validator(
     z.object({
       conversationId: z.string(),
-      message: z.string().min(1),
+      message: z.string().min(3),
       agentType: z.enum(['d3', 'wow']),
     })
   )
@@ -155,14 +135,15 @@ export const sendMessageFn = createServerFn({ method: 'POST' })
       const userMessage = { role: 'user' as const, content: message }
       const contextMessages = buildContext([
         ...history.map((m: any) => ({
-          role: m.role as 'user' | 'assistant' | 'system',
+          role: m.role as MessageRole,
           content: m.content,
         })),
         userMessage,
       ])
       const tools = createSharedTools(env as any)
 
-      const responseContent = await runAgent(contextMessages, agentType, tools, logger)
+      const groqApiKey = (env as any).GROQ_API_KEY
+      const responseContent = await runAgent(contextMessages, agentType, groqApiKey, tools, logger)
 
       const userMsgId = crypto.randomUUID()
       await db.insert(messages).values({

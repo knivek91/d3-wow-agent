@@ -470,7 +470,7 @@ const webScrapeTool = toolDefinition({
 async function agentChat({ messages, system, tools }) {
   try {
     return await chat({
-      adapter: groqAdapter("llama-3.3-70b-versatile"),
+      adapter: groqAdapter("llama-3.1-70b-versatile"),
       messages,
       system,
       tools: [webScrapeTool],
@@ -1214,7 +1214,7 @@ Set a strict maximum on output tokens per turn:
 ```typescript
 // src/lib/agents/base.ts
 const agentChat = chat({
-  adapter: groqAdapter("llama-3.3-70b-versatile", {
+  adapter: groqAdapter("llama-3.1-70b-versatile", {
     maxTokens: 300,       // ← Hard cap: never more than 300 tokens
     temperature: 0.3,     // ← Lower temp = more deterministic, less rambling
   }),
@@ -1303,7 +1303,7 @@ After evaluating the Groq and Google Gemini free tiers, the primary and fallback
 
 | Provider | Model | Role | Free Tier Limits |
 |---|---|---|---|
-| **Groq** | `llama-3.3-70b-versatile` | **Primary** — best quality, tool calling | 30 RPM, 1K RPD, 12K TPM |
+| **Groq** | `llama-3.1-70b-versatile` | **Primary** — best quality, tool calling | 30 RPM, 1K RPD, 12K TPM |
 | **Groq** | `llama-1b` (or any) | Alternate — higher daily limit | 30 RPM, 14.4K RPD |
 | **Gemini** | `gemini-2.5-flash` | **Fallback** — when Groq rate-limited | 10 RPM, 250 RPD |
 | **Gemini** | `gemini-2.5-flash-lite` | Cheaper fallback, higher limits | 15 RPM, 1K RPD |
