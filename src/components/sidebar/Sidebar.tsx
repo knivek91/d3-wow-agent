@@ -106,6 +106,15 @@ export default function Sidebar({
             </Button>
           ))}
         </div>
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => authClient.signOut({ callbackURL: '/auth/login' })}
+          className="text-muted-foreground hover:text-destructive mt-auto"
+          title="Sign out"
+        >
+          <LogOut className="w-4 h-4" />
+        </Button>
       </div>
 
       {/* ── Expanded sidebar: hidden on mobile, shown on desktop ── */}

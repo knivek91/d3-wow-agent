@@ -11,7 +11,7 @@ function LoginPage() {
   const navigate = useNavigate()
 
   async function handleDiscordLogin() {
-    await authClient.signIn.social({ provider: 'discord' })
+    await authClient.signIn.social({ provider: 'discord', callbackURL: '/chat' })
   }
 
   return (

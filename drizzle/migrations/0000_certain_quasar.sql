@@ -19,8 +19,8 @@ CREATE TABLE `conversations` (
 	`title` text DEFAULT 'New Conversation' NOT NULL,
 	`agentType` text NOT NULL,
 	`userId` text NOT NULL,
-	`createdAt` text DEFAULT 'datetime(''now'')' NOT NULL,
-	`updatedAt` text DEFAULT 'datetime(''now'')' NOT NULL,
+	`createdAt` text DEFAULT (datetime('now')) NOT NULL,
+	`updatedAt` text DEFAULT (datetime('now')) NOT NULL,
 	FOREIGN KEY (`userId`) REFERENCES `user`(`id`) ON UPDATE no action ON DELETE cascade
 );
 --> statement-breakpoint
@@ -30,7 +30,7 @@ CREATE TABLE `error_logs` (
 	`userId` text,
 	`message` text NOT NULL,
 	`error` text,
-	`timestamp` text DEFAULT 'datetime(''now'')' NOT NULL
+	`timestamp` text DEFAULT (datetime('now')) NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE `messages` (
@@ -41,7 +41,7 @@ CREATE TABLE `messages` (
 	`agentType` text NOT NULL,
 	`modelUsed` text,
 	`tokensUsed` integer,
-	`createdAt` text DEFAULT 'datetime(''now'')' NOT NULL,
+	`createdAt` text DEFAULT (datetime('now')) NOT NULL,
 	FOREIGN KEY (`conversationId`) REFERENCES `conversations`(`id`) ON UPDATE no action ON DELETE cascade
 );
 --> statement-breakpoint
@@ -54,7 +54,7 @@ CREATE TABLE `rate_limits` (
 CREATE TABLE `scrape_cache` (
 	`url` text PRIMARY KEY NOT NULL,
 	`content` text NOT NULL,
-	`createdAt` text DEFAULT 'datetime(''now'')' NOT NULL,
+	`createdAt` text DEFAULT (datetime('now')) NOT NULL,
 	`expiresAt` text NOT NULL
 );
 --> statement-breakpoint

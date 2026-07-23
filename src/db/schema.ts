@@ -1,3 +1,4 @@
+import { sql } from "drizzle-orm";
 import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
 
 export const user = sqliteTable("user", {
@@ -50,8 +51,8 @@ export const conversations = sqliteTable("conversations", {
   title: text("title").notNull().default("New Conversation"),
   agentType: text("agentType", { enum: ["d3", "wow"] }).notNull(),
   userId: text("userId").notNull().references(() => user.id, { onDelete: "cascade" }),
-  createdAt: text("createdAt").notNull().default("datetime('now')"),
-  updatedAt: text("updatedAt").notNull().default("datetime('now')"),
+  createdAt: text("createdAt").notNull().default(sql`(datetime('now'))`),
+  updatedAt: text("updatedAt").notNull().default(sql`(datetime('now'))`),
 });
 
 export const messages = sqliteTable("messages", {
@@ -64,7 +65,7 @@ export const messages = sqliteTable("messages", {
   agentType: text("agentType", { enum: ["d3", "wow"] }).notNull(),
   modelUsed: text("modelUsed"),
   tokensUsed: integer("tokensUsed"),
-  createdAt: text("createdAt").notNull().default("datetime('now')"),
+  createdAt: text("createdAt").notNull().default(sql`(datetime('now'))`),
 });
 
 export const rateLimits = sqliteTable("rate_limits", {
@@ -76,7 +77,7 @@ export const rateLimits = sqliteTable("rate_limits", {
 export const scrapeCache = sqliteTable("scrape_cache", {
   url: text("url").primaryKey(),
   content: text("content").notNull(),
-  createdAt: text("createdAt").notNull().default("datetime('now')"),
+  createdAt: text("createdAt").notNull().default(sql`(datetime('now'))`),
   expiresAt: text("expiresAt").notNull(),
 });
 
@@ -86,5 +87,5 @@ export const errorLogs = sqliteTable("error_logs", {
   userId: text("userId"),
   message: text("message").notNull(),
   error: text("error"),
-  timestamp: text("timestamp").notNull().default("datetime('now')"),
+  timestamp: text("timestamp").notNull().default(sql`(datetime('now'))`),
 });

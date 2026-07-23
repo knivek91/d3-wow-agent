@@ -1,8 +1,14 @@
 import { createAuthClient } from "better-auth/react"
 import { tanstackStartCookies } from "better-auth/tanstack-start"
 
+const baseURL = import.meta.env.VITE_BASE_URL
+
+if (!baseURL) {
+  throw new Error("VITE_BASE_URL is required. Set it in .env or .dev.vars for local dev, or configure it in deploy.yml for production.")
+}
+
 export const authClient = createAuthClient({
-  baseURL: import.meta.env.VITE_BASE_URL || "http://localhost:3000",
+  baseURL,
   plugins: [tanstackStartCookies()],
 })
 
