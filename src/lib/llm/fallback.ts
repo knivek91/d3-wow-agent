@@ -12,11 +12,11 @@ export async function callWithFallback(
 
   try {
     logger?.info(
-      { provider: "groq", model: "llama-3.3-70b-versatile" },
+      { provider: "groq", model: "llama-3.1-70b-versatile" },
       "Attempting Groq call",
     )
 
-    const groq = openaiCompatibleText("llama-3.3-70b-versatile", {
+    const groq = openaiCompatibleText("llama-3.1-70b-versatile", {
       baseURL: "https://api.groq.com/openai/v1",
       apiKey: groqApiKey,
     })
@@ -41,7 +41,7 @@ export async function callWithFallback(
     const isRateLimit =
       error instanceof Error &&
       'status' in error &&
-      (error as any).status === 429
+      (error as { status?: unknown }).status === 429
 
     if (isRateLimit) {
       logger?.warn(

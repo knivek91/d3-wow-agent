@@ -1,6 +1,6 @@
 export type ApiResponse<T> =
   | { data: T; error: null }
-  | { data: null; error: string }
+  | { data: T; error: string }
 
 export async function withErrorHandling<T>(
   fn: () => Promise<T>,
@@ -13,6 +13,6 @@ export async function withErrorHandling<T>(
   } catch (e) {
     const prefix = label ? `[${label}] ` : ''
     console.error(`${prefix}error`, e instanceof Error ? e.message : e)
-    return { data: fallback, error: e instanceof Error ? e.message : 'Unknown error' }
+    return { data: fallback, error: 'An unexpected error occurred' }
   }
 }
