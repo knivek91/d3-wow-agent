@@ -3,6 +3,15 @@ import { openaiCompatibleText } from "@tanstack/ai-openai/compatible";
 import { createGeminiAdapter } from "./adapters";
 import type { Logger } from "../observability/logger";
 
+/**
+ * Call Groq's LLM API with automatic fallback to Gemini on failure.
+ * Creates adapters per-request with explicit API keys (no module-level state).
+ * @param messages - Array of chat messages with role and content.
+ * @param groqApiKey - API key for Groq.
+ * @param geminiApiKey - API key for Gemini (used on fallback).
+ * @param logger - Optional logger for structured output.
+ * @returns The model's response text.
+ */
 export async function callWithFallback(
 	messages: Array<{ role: string; content: string }>,
 	groqApiKey: string,

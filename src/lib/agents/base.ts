@@ -12,10 +12,25 @@ export interface AgentMessage {
 	content: string;
 }
 
+/**
+ * Returns the system prompt for the given agent type.
+ * @param agentType - "d3" for D3 specialist, "wow" for WoW specialist.
+ */
 export function buildSystemPrompt(agentType: AgentType): string {
 	return agentType === "d3" ? D3_SYSTEM_PROMPT : WOW_SYSTEM_PROMPT;
 }
 
+/**
+ * Run an AI agent (D3 specialist or WoW specialist) with the given messages.
+ * Builds the system prompt, prepends it, and delegates to callWithFallback.
+ * @param messages - Conversation history (user + assistant messages).
+ * @param agentType - Which agent to use ("d3" or "wow").
+ * @param groqApiKey - API key for Groq.
+ * @param geminiApiKey - API key for Gemini fallback.
+ * @param tools - Optional tools (currently unused, reserved for future use).
+ * @param logger - Optional logger for structured output.
+ * @returns The agent's response text.
+ */
 export async function runAgent(
 	messages: AgentMessage[],
 	agentType: AgentType,

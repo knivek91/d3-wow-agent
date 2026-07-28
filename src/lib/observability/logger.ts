@@ -48,6 +48,11 @@ function safeStringify(value: unknown): string {
 	}
 }
 
+/**
+ * Structured JSON logger that writes to console. Each entry includes level,
+ * timestamp, message, and any extra context. Guaranteed to never throw during
+ * serialization — uses safeStringify internally.
+ */
 class ConsoleLogger {
 	private base: Record<string, unknown>;
 
@@ -55,13 +60,17 @@ class ConsoleLogger {
 		this.base = base;
 	}
 
+	/**
+	 * Core log method. Assembles the entry from base context + caller fields,
+	 * serializes safely, and writes to the appropriate console method.
+	 */
 	private log(level: LogLevel, obj: Record<string, unknown>, msg: string) {
 		const entry: LogEntry = {
+			...this.base,
+			...obj,
 			level,
 			time: new Date().toISOString(),
 			msg,
-			...this.base,
-			...obj,
 		};
 
 		const output = safeStringify(entry);
@@ -78,6 +87,11 @@ class ConsoleLogger {
 		}
 	}
 
+	/**
+	 * Log at debug level.
+	 * @param obj - Structured context fields, or the message itself if a string.
+	 * @param msg - Message string (required if obj is an object).
+	 */
 	debug(obj: Record<string, unknown> | string, msg?: string) {
 		if (typeof obj === "string") {
 			this.log("debug", {}, obj);
@@ -86,6 +100,11 @@ class ConsoleLogger {
 		}
 	}
 
+	/**
+	 * Log at info level.
+	 * @param obj - Structured context fields, or the message itself if a string.
+	 * @param msg - Message string (required if obj is an object).
+	 */
 	info(obj: Record<string, unknown> | string, msg?: string) {
 		if (typeof obj === "string") {
 			this.log("info", {}, obj);
@@ -94,6 +113,11 @@ class ConsoleLogger {
 		}
 	}
 
+	/**
+	 * Log at warn level.
+	 * @param obj - Structured context fields, or the message itself if a string.
+	 * @param msg - Message string (required if obj is an object).
+	 */
 	warn(obj: Record<string, unknown> | string, msg?: string) {
 		if (typeof obj === "string") {
 			this.log("warn", {}, obj);
@@ -102,6 +126,11 @@ class ConsoleLogger {
 		}
 	}
 
+	/**
+	 * Log at error level.
+	 * @param obj - Structured context fields, or the message itself if a string.
+	 * @param msg - Message string (required if obj is an object).
+	 */
 	error(obj: Record<string, unknown> | string, msg?: string) {
 		if (typeof obj === "string") {
 			this.log("error", {}, obj);
@@ -110,11 +139,21 @@ class ConsoleLogger {
 		}
 	}
 
+	/**
+	 * Create a child logger that inherits this logger's base context merged
+	 * with the provided extra fields.
+	 * @param extra - Additional context fields to merge into the base.
+	 */
 	child(extra: Record<string, unknown>): ConsoleLogger {
 		return new ConsoleLogger({ ...this.base, ...extra });
 	}
 }
 
+/**
+ * Create a structured JSON logger. Each log entry is serialized to a JSON
+ * string with level, timestamp, message, and context fields.
+ * @param requestId - Optional request ID to include in every log entry.
+ */
 export function createLogger(requestId?: string): ConsoleLogger {
 	return new ConsoleLogger(requestId ? { requestId } : {});
 }
