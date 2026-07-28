@@ -10,6 +10,8 @@ Use this skill when creating a pull request.
 ## PR Title Format
 Use conventional commits: `<type>: <short description>`
 
+**Language**: All PR content — title, body, and comments — must be in English.
+
 Types:
 - `fix:` — bug fixes, error corrections, preventive fixes
 - `feat:` — new features, enhancements
