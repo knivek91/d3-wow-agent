@@ -22,14 +22,27 @@ function safeStringify(value: unknown): string {
 					message: v.message,
 					stack: v.stack,
 				};
+				// Block sensitive error properties that could leak API keys
+				const UNSAFE_ERROR_KEYS = new Set([
+					"__proto__",
+					"constructor",
+					"prototype",
+					"config",
+					"request",
+					"response",
+					"headers",
+					"apikey",
+					"authorization",
+				]);
 				// Copy any custom enumerable properties that are safely serializable
 				for (const prop of Object.keys(v as unknown as Record<string, unknown>)) {
+					if (UNSAFE_ERROR_KEYS.has(prop.toLowerCase())) continue;
 					try {
-						// Test if the property value is JSON-serializable
-						JSON.stringify((v as unknown as Record<string, unknown>)[prop]);
-						safe[prop] = (v as unknown as Record<string, unknown>)[prop];
+						const propValue = (v as unknown as Record<string, unknown>)[prop];
+						JSON.stringify(propValue);
+						safe[prop] = propValue;
 					} catch {
-						safe[prop] = String((v as unknown as Record<string, unknown>)[prop]);
+						safe[prop] = "[unserializable]";
 					}
 				}
 				return safe;
@@ -43,7 +56,7 @@ function safeStringify(value: unknown): string {
 			level: entry.level ?? "error",
 			msg: entry.msg ?? "Failed to serialize log entry",
 			time: entry.time ?? new Date().toISOString(),
-			error: "Log serialization error — check raw output above",
+			error: "Log serialization error: original context was dropped because it could not be JSON-serialized",
 		});
 	}
 }
