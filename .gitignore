@@ -17,7 +17,7 @@ todos.json
 !.env.example
 
 # Tool-specific config
-opencode.json
+
 
 # Test coverage
 coverage/
@@ -39,3 +39,6 @@ pnpm-debug.log*
 # Temp directories
 tmp/
 temp/
+
+# Secrets
+opencode.json
