@@ -39,3 +39,6 @@ pnpm-debug.log*
 # Temp directories
 tmp/
 temp/
+
+# Secrets
+opencode.json
