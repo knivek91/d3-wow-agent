@@ -16,7 +16,8 @@
     "lint": "biome lint",
     "check": "biome check",
     "deploy": "npm run build && wrangler deploy",
-    "cf-typegen": "wrangler types"
+    "cf-typegen": "wrangler types",
+    "prepare": "husky"
   },
   "dependencies": {
     "@better-auth/drizzle-adapter": "1.6.24",
@@ -61,7 +62,9 @@
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.3",
     "drizzle-kit": "0.31.10",
+    "husky": "9.1.7",
     "jsdom": "28.1.0",
+    "lint-staged": "17.2.0",
     "playwright": "1.61.1",
     "typescript": "6.0.3",
     "vite": "8.1.5",
@@ -72,6 +75,11 @@
     "onlyBuiltDependencies": [
       "esbuild",
       "lightningcss"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,mjs,cjs}": [
+      "biome check --apply"
     ]
   }
 }
