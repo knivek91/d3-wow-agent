@@ -8,26 +8,27 @@ import type { MessageRole, ChatMessage } from "#/types/message.ts";
 export type { AgentType } from "#/types/agent.ts";
 
 export interface AgentMessage {
-  role: MessageRole
-  content: string
+	role: MessageRole;
+	content: string;
 }
 
 export function buildSystemPrompt(agentType: AgentType): string {
-  return agentType === "d3" ? D3_SYSTEM_PROMPT : WOW_SYSTEM_PROMPT;
+	return agentType === "d3" ? D3_SYSTEM_PROMPT : WOW_SYSTEM_PROMPT;
 }
 
 export async function runAgent(
-  messages: AgentMessage[],
-  agentType: AgentType,
-  groqApiKey: string,
-  tools?: unknown[],
-  logger?: Logger,
+	messages: AgentMessage[],
+	agentType: AgentType,
+	groqApiKey: string,
+	geminiApiKey: string,
+	tools?: unknown[],
+	logger?: Logger,
 ): Promise<string> {
-  const systemPrompt = buildSystemPrompt(agentType);
-  const fullMessages: AgentMessage[] = [
-    { role: "system", content: systemPrompt },
-    ...messages,
-  ];
+	const systemPrompt = buildSystemPrompt(agentType);
+	const fullMessages: AgentMessage[] = [
+		{ role: "system", content: systemPrompt },
+		...messages,
+	];
 
-  return callWithFallback(fullMessages, groqApiKey, logger);
+	return callWithFallback(fullMessages, groqApiKey, geminiApiKey, logger);
 }

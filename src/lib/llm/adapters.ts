@@ -1,3 +1,5 @@
-import { geminiText } from "@tanstack/ai-gemini";
+import { createGeminiChat } from "@tanstack/ai-gemini";
 
-export const geminiAdapter = geminiText("gemini-3.5-flash");
+export function createGeminiAdapter(apiKey: string) {
+	return createGeminiChat("gemini-3.5-flash", apiKey);
+}
