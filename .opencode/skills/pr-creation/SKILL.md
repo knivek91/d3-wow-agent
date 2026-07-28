@@ -1,7 +1,7 @@
 # PR Creation
 
 ## When to Load
-Use this skill when creating a pull request for the d3-wow-agent repository.
+Use this skill when creating a pull request.
 
 ## Before Creating
 1. Search for existing PRs to avoid duplicates
@@ -37,7 +37,7 @@ Set `knivek91` as the assignee.
 Use this template:
 
 ### Summary
-One paragraph explaining what the PR does and why.
+Up to 2 paragraphs explaining what the PR does and why.
 
 ### Changes
 Bullet list of files changed, with a brief description of each change.
