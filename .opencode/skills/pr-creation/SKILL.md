@@ -18,6 +18,7 @@ Types:
 - `chore:` — tooling, config, CI/CD, dependencies (no code logic changes)
 - `refactor:` — code restructuring without behavior change
 - `poc:` — proof of concept, experimental
+- `release:` — cumulative release PR (develop → main)
 
 ## Labels
 Apply the corresponding label based on the PR type:
@@ -29,8 +30,21 @@ Apply the corresponding label based on the PR type:
 | `chore:` | `chore` |
 | `refactor:` | `refactor` |
 | `poc:` | `poc` |
+| `release:` | `release` |
 
 If none of the above apply, leave unlabeled.
+
+## Label Colors
+When creating new labels, use these colors:
+
+| Label | Color | Hex |
+|-------|-------|-----|
+| `bugfix` | 🟢 Green | `#2ea043` |
+| `chore` | 🔘 Grey | `#bfdadc` |
+| `enhancement` | 🔵 Blue | `#a2eeef` |
+| `refactor` | 🟡 Yellow | `#fbca04` |
+| `poc` | 🟣 Lilac | `#d876e3` |
+| `release` | 🟣 Violet | `#5319e7` |
 
 ## Assignee
 Set `knivek91` as the assignee.
